@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Asteroids.Objects
 {
@@ -15,7 +16,7 @@ namespace Asteroids.Objects
             this.size = size;
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             Game.Buffer.Graphics.DrawEllipse(Pens.White, pos.X, pos.Y, size.Width, size.Height);
         }
@@ -25,6 +26,23 @@ namespace Asteroids.Objects
             pos.X = pos.X + dir.X;
             pos.Y = pos.Y + dir.Y;
             if (pos.X < 0) dir.X = -dir.X;
+            if (pos.X > Game.Width) dir.X = -dir.X;
+            if (pos.Y < 0) dir.Y = -dir.Y;
+            if (pos.Y > Game.Height) dir.Y = -dir.Y;
+        }
+    }
+
+    class Star : BaseObject
+    {
+        Color color;
+        public Star(Point pos, Point dir, Size size, Color color) : base(pos, dir, size)
+        {
+            this.color = color;
+        }
+
+        public override void Draw()
+        {
+            Game.Buffer.Graphics.DrawLine(Pens.Red, new Point());
         }
     }
 }
