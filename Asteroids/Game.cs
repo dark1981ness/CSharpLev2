@@ -70,5 +70,12 @@ namespace Asteroids
             Buffer.Render();
         }
 
+        static public void Update()
+        {
+            foreach (BaseObject obj in _objs)
+            {
+                obj.Update();
+            }
+        }
     }
 }
