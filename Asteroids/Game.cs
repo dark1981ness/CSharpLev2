@@ -59,7 +59,7 @@ namespace Asteroids
             for (int i = 5; i < _objs.Length; i++)
             {
                 int y = random.Next(50, (Height - 60));
-                _objs[i] = new Star(new Point(600, y), new Point(-i,0), new Size(50, 50), starImage);
+                _objs[i] = new Star(new Point(600, y), new Point(-i, 0), new Size(50, 50), starImage);
             }
         }
 
