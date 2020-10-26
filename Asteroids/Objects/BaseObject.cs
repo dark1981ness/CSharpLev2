@@ -8,6 +8,7 @@ namespace Asteroids.Objects
     {
         Point _pos, _dir;
         Size _size;
+        Image _image;
 
         protected Point Pos
         {
@@ -27,11 +28,17 @@ namespace Asteroids.Objects
             set => _size = value;
         }
 
+        protected Image Image
+        {
+            get => _image;
+            set => _image = value;
+        }
+
         public BaseObject(Point pos, Point dir, Size size)
         {
-            this._pos = pos;
-            this._dir = dir;
-            this._size = size;
+            _pos = pos;
+            _dir = dir;
+            _size = size;
         }
 
         public virtual void Draw()

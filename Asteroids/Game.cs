@@ -18,6 +18,8 @@ namespace Asteroids
         static public int Width { get; private set; }
         static public int Height { get; private set; }
         static public Image background = Image.FromFile("..\\..\\images\\background.jpg");
+        static public Image starImage = Image.FromFile("..\\..\\images\\star_new.png");
+        static public Image asteroidImage = Image.FromFile("..\\..\\images\\asteroid_new.png");
         static Timer timer = new Timer();
         static BaseObject[] _objs;
 
@@ -41,31 +43,29 @@ namespace Asteroids
 
         private static void Timer_Tick(object sender, EventArgs e)
         {
-            Draw();
             Update();
-           
+            Draw();
         }
 
         static public void Load()
         {
+            Random random = new Random();
             _objs = new BaseObject[30];
-            for (int i = 0; i < _objs.Length/2; i++)
+            for (int i = 0; i < _objs.Length - 25; i++)
             {
-                _objs[i] = new BaseObject(new Point(600, i * 20), new Point(15 - i, 15 - i), new Size(20, 20));
+                int y = random.Next(50, (Height - 60));
+                _objs[i] = new Asteroid(new Point(600, y), new Point(15 - i, 15 - i), new Size(100, 100), asteroidImage);
             }
-            for (int i = 15; i < _objs.Length; i++)
+            for (int i = 5; i < _objs.Length; i++)
             {
-                _objs[i] = new Star(new Point(600, i * 20), new Point(-i,0), new Size(20, 20), Color.White);
+                int y = random.Next(50, (Height - 60));
+                _objs[i] = new Star(new Point(600, y), new Point(-i,0), new Size(50, 50), starImage);
             }
         }
 
         static public void Draw()
         {
-            //Buffer.Graphics.Clear(Color.Black);
-            Buffer.Graphics.DrawImage(background, 0, 0);
-            //Buffer.Graphics.DrawRectangle(Pens.White, new Rectangle(100, 100, 200, 200));
-            //Buffer.Graphics.FillEllipse(Brushes.Wheat, new Rectangle(100, 100, 200, 200));
-
+            Buffer.Graphics.DrawImage(background, 0, 0, Width, Height);
             foreach (BaseObject obj in _objs)
             {
                 obj.Draw();

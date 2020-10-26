@@ -1,11 +1,16 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Asteroids.Objects
 {
-    class Star : BaseObject
+    class Asteroid:BaseObject
     {
         Image image;
-        public Star(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
+        public Asteroid(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
         {
             this.image = image;
         }
@@ -17,8 +22,7 @@ namespace Asteroids.Objects
 
         public override void Update()
         {
-            Pos = new Point(Pos.X - Dir.X, Pos.Y);
-            if (Pos.X > Game.Width) Pos = new Point(0, Pos.Y);
+            base.Update();
         }
     }
 }
