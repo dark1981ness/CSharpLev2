@@ -6,43 +6,47 @@ namespace Asteroids.Objects
 {
     class BaseObject
     {
-        Point pos, dir;
-        Size size;
+        Point _pos, _dir;
+        Size _size;
+
+        protected Point Pos
+        {
+            get => _pos;
+            set => _pos = value;
+        }
+
+        protected Point Dir
+        {
+            get => _dir;
+            set => _dir = value;
+        }
+
+        protected Size Size
+        { 
+            get => _size;
+            set => _size = value;
+        }
 
         public BaseObject(Point pos, Point dir, Size size)
         {
-            this.pos = pos;
-            this.dir = dir;
-            this.size = size;
+            this._pos = pos;
+            this._dir = dir;
+            this._size = size;
         }
 
         public virtual void Draw()
         {
-            Game.Buffer.Graphics.DrawEllipse(Pens.White, pos.X, pos.Y, size.Width, size.Height);
+            Game.Buffer.Graphics.DrawEllipse(Pens.White, _pos.X, _pos.Y, _size.Width, _size.Height);
         }
 
-        public void Update()
+        public virtual void Update()
         {
-            pos.X = pos.X + dir.X;
-            pos.Y = pos.Y + dir.Y;
-            if (pos.X < 0) dir.X = -dir.X;
-            if (pos.X > Game.Width) dir.X = -dir.X;
-            if (pos.Y < 0) dir.Y = -dir.Y;
-            if (pos.Y > Game.Height) dir.Y = -dir.Y;
-        }
-    }
-
-    class Star : BaseObject
-    {
-        Color color;
-        public Star(Point pos, Point dir, Size size, Color color) : base(pos, dir, size)
-        {
-            this.color = color;
-        }
-
-        public override void Draw()
-        {
-            Game.Buffer.Graphics.DrawLine(Pens.Red, new Point());
+            _pos.X = _pos.X + _dir.X;
+            _pos.Y = _pos.Y + _dir.Y;
+            if (_pos.X < 0) _dir.X = -_dir.X;
+            if (_pos.X > Game.Width) _dir.X = -_dir.X;
+            if (_pos.Y < 0) _dir.Y = -_dir.Y;
+            if (_pos.Y > Game.Height) _dir.Y = -_dir.Y;
         }
     }
 }
