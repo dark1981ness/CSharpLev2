@@ -22,7 +22,11 @@ namespace Asteroids.Objects
 
         public override void Update()
         {
-            base.Update();
+            Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
+            if (Pos.X < 0) Dir = new Point(Dir.X * (-1), Dir.Y);
+            if (Pos.X > Game.Width) Dir = new Point(Dir.X * (-1), Dir.Y);
+            if (Pos.Y < 0) Dir = new Point(Dir.X, Dir.Y * (-1));
+            if (Pos.Y > Game.Height) Dir = new Point(Dir.X, Dir.Y * (-1));
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Asteroids.Objects
 {
-    class BaseObject
+    abstract class BaseObject
     {
         Point _pos, _dir;
         Size _size;
@@ -46,14 +46,7 @@ namespace Asteroids.Objects
             Game.Buffer.Graphics.DrawEllipse(Pens.White, _pos.X, _pos.Y, _size.Width, _size.Height);
         }
 
-        public virtual void Update()
-        {
-            _pos.X = _pos.X + _dir.X;
-            _pos.Y = _pos.Y + _dir.Y;
-            if (_pos.X < 0) _dir.X = -_dir.X;
-            if (_pos.X > Game.Width) _dir.X = -_dir.X;
-            if (_pos.Y < 0) _dir.Y = -_dir.Y;
-            if (_pos.Y > Game.Height) _dir.Y = -_dir.Y;
-        }
+        public abstract void Update();
+
     }
 }

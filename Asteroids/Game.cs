@@ -29,6 +29,7 @@ namespace Asteroids
         }
         static public void Init(Form form)
         {
+
             Graphics g;
             context = BufferedGraphicsManager.Current;
             g = form.CreateGraphics();
@@ -39,6 +40,8 @@ namespace Asteroids
             timer.Tick += Timer_Tick;
             timer.Start();
             Load();
+
+
         }
 
         private static void Timer_Tick(object sender, EventArgs e)

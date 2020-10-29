@@ -5,3 +5,10 @@ E:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csprojAssemblyReference.cac
 E:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.CoreCompileInputs.cache
 E:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.exe
 E:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.pdb
+D:\learning\CSharpLev2\Asteroids\bin\Debug\Asteroids.exe.config
+D:\learning\CSharpLev2\Asteroids\bin\Debug\Asteroids.exe
+D:\learning\CSharpLev2\Asteroids\bin\Debug\Asteroids.pdb
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csprojAssemblyReference.cache
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.CoreCompileInputs.cache
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.exe
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.pdb
