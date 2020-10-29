@@ -15,10 +15,13 @@ namespace Asteroids.Objects
             Game.Buffer.Graphics.DrawImage(image, Pos.X, Pos.Y, Size.Width, Size.Height);
         }
 
+        /// <summary>
+        /// Переопределенный абстрактный метод родителя
+        /// </summary>
         public override void Update()
         {
             Pos = new Point(Pos.X - Dir.X, Pos.Y);
-            if (Pos.X > Game.Width) Pos = new Point(0, Pos.Y);
+            if (Pos.X < 0) Pos = new Point(Game.Width, Pos.Y);
         }
     }
 }

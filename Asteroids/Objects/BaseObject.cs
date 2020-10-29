@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Asteroids.Interfaces;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace Asteroids.Objects
 {
-    abstract class BaseObject
+    abstract class BaseObject : ICollision
     {
         Point _pos, _dir;
         Size _size;
-        Image _image;
 
         protected Point Pos
         {
@@ -23,16 +21,12 @@ namespace Asteroids.Objects
         }
 
         protected Size Size
-        { 
+        {
             get => _size;
             set => _size = value;
         }
 
-        protected Image Image
-        {
-            get => _image;
-            set => _image = value;
-        }
+        public Rectangle Rect => new Rectangle(_pos, _size);
 
         public BaseObject(Point pos, Point dir, Size size)
         {
@@ -41,12 +35,13 @@ namespace Asteroids.Objects
             _size = size;
         }
 
-        public virtual void Draw()
-        {
-            Game.Buffer.Graphics.DrawEllipse(Pens.White, _pos.X, _pos.Y, _size.Width, _size.Height);
-        }
-
+        public abstract void Draw();
+       
+        /// <summary>
+        /// Обновление позиции объекта на игровом поле
+        /// </summary>
         public abstract void Update();
 
+        public bool Collision(ICollision obj) => obj.Rect.IntersectsWith(this.Rect);
     }
 }

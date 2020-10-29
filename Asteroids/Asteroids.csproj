@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="Interfaces\ICollision.cs" />
     <Compile Include="Objects\Asteroid.cs" />
     <Compile Include="Objects\BaseObject.cs" />
+    <Compile Include="Objects\Bullet.cs" />
     <Compile Include="Objects\Star.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +62,7 @@
     <Content Include="Images\asteroid_new.png" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\asteroid.png" />
+    <Content Include="Images\bullet.png" />
     <Content Include="Images\star.png" />
     <Content Include="Images\star_new.png" />
   </ItemGroup>
