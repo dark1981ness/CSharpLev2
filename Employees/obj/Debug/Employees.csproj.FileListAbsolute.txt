@@ -1,0 +1,11 @@
+E:\learning\C#\backup\CSharpLev2\Employees\bin\Debug\Employees.exe.config
+E:\learning\C#\backup\CSharpLev2\Employees\bin\Debug\Employees.exe
+E:\learning\C#\backup\CSharpLev2\Employees\bin\Debug\Employees.pdb
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.csprojAssemblyReference.cache
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.Properties.Resources.resources
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.csproj.GenerateResource.cache
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.csproj.CoreCompileInputs.cache
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.exe
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.pdb
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.Form1.resources
+E:\learning\C#\backup\CSharpLev2\Employees\obj\Debug\Employees.Form2.resources

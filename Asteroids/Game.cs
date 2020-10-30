@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using Asteroids.Objects;
+using Asteroids.Properties;
 
 namespace Asteroids
 {
@@ -17,10 +18,10 @@ namespace Asteroids
         static public Random Random { get; } = new Random();
         static public int Width { get; private set; }
         static public int Height { get; private set; }
-        static public Image background = Image.FromFile("..\\..\\images\\background.jpg");
-        static public Image starImage = Image.FromFile("..\\..\\images\\star_new.png");
-        static public Image asteroidImage = Image.FromFile("..\\..\\images\\asteroid_new.png");
-        static public Image bulletImage = Image.FromFile("..\\..\\images\\bullet.png");
+        static public Image background = Resources.background;
+        static public Image starImage = Resources.star_new;
+        static public Image asteroidImage = Resources.asteroid_new;
+        static public Image bulletImage = Resources.bullet;
         static Timer timer = new Timer();
         static BaseObject[] _objs;
         static Asteroid[] _asteroids;

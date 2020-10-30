@@ -8,7 +8,8 @@ namespace Employees
 {
     class FixedSalary : Person
     {
-        public FixedSalary(string name, string surname, string patronymic, int id) : base(name, surname, patronymic, id) { }
+        public FixedSalary() { }
+        public FixedSalary(string name, string surname, string patronymic, int age, double salary) : base(name, surname, patronymic, age, salary) { }
         public override double Payment()
         {
             return Salary;

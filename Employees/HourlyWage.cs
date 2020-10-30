@@ -31,7 +31,9 @@ namespace Employees
             set { _wageRate = value; }
         }
 
-        public HourlyWage(string name, string surname, string patronymic, int id, double hours, double days, double wagerate) : base(name,surname,patronymic,id)
+        public HourlyWage() { }
+
+        public HourlyWage(string name, string surname, string patronymic, int age, double salary, double hours, double days, double wagerate) : base(name, surname, patronymic, age, salary)
         {
             Hours = hours;
             Days = days;
