@@ -13,7 +13,6 @@ namespace Employees
     public partial class Form1 : Form
     {
         List<Person> peopledb;
-
         public bool IsEnable
         {
             get => button1.Enabled;
@@ -37,9 +36,8 @@ namespace Employees
 
         private void button3_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = peopledb;
-            dataGridView1.Update();
-            dataGridView1.Refresh();
         }
     }
 }
