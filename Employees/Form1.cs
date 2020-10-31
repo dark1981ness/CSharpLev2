@@ -29,7 +29,9 @@ namespace Employees
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
-            Form form = new Form2();
+            Form2 form = new Form2();
+            form.ReturnBtnState += (s, ev) => IsEnable = true;
+            form.AddEmployeeData += (s, ev) => peopledb.Add(new FixedSalary { Name = ev.Name, Surname = ev.SurName, Patronymic = ev.Patronymic, Age = ev.Age, Salary = ev.Salary });
             form.Show();
         }
 

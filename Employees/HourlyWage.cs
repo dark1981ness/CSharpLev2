@@ -33,7 +33,7 @@ namespace Employees
 
         public HourlyWage() { }
 
-        public HourlyWage(string name, string surname, string patronymic, int age, double salary, double hours, double days, double wagerate) : base(name, surname, patronymic, age, salary)
+        public HourlyWage(string name, string surname, string patronymic, decimal age, double salary, double hours, double days, double wagerate) : base(name, surname, patronymic, age, salary)
         {
             Hours = hours;
             Days = days;

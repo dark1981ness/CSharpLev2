@@ -12,7 +12,7 @@ namespace Employees
         private string _pName;
         private string _pSurname;
         private string _pPatronymic;
-        private int _pAge;
+        private decimal _pAge;
         private double _salary;
 
         public string Name
@@ -33,7 +33,7 @@ namespace Employees
             set { _pPatronymic = value; }
         }
 
-        public int Age
+        public decimal Age
         {
             get { return _pAge; }
             set { _pAge = value; }
@@ -47,7 +47,7 @@ namespace Employees
 
         public Person() { }
 
-        public Person(string name, string surname, string patronymic, int age, double salary)
+        public Person(string name, string surname, string patronymic, decimal age, double salary)
         {
             Name = name;
             Surname = surname;
