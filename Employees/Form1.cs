@@ -38,6 +38,8 @@ namespace Employees
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = peopledb;
+            dataGridView1.Update();
+            dataGridView1.Refresh();
         }
     }
 }
