@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Employees
+namespace Person
 {
-    abstract class Person : IComparable
+    abstract class Person : IComparable, IEnumerator
     {
 
         private string _pName;
@@ -15,6 +15,8 @@ namespace Employees
         private string _pPatronymic;
         private decimal _pAge;
         private double _salary;
+        Person[] _people;
+        int i = -1;
 
         public string Name
         {
@@ -46,8 +48,14 @@ namespace Employees
             set { _salary = value; }
         }
 
+        public object Current => _people[i];
+
         public Person() { }
 
+        public Person(Person[] employee)
+        {
+            _people = employee;
+        }
         public Person(string name, string surname, string patronymic, decimal age, double salary)
         {
             Name = name;
@@ -86,10 +94,10 @@ namespace Employees
                 Person c1 = (Person)a;
                 Person c2 = (Person)b;
 
-                if (c1._pAge > c2._pAge)
+                if (c1._pAge < c2._pAge)
                     return 1;
 
-                if (c1._pAge < c2._pAge)
+                if (c1._pAge > c2._pAge)
                     return -1;
 
                 else
@@ -122,10 +130,10 @@ namespace Employees
                 Person c1 = (Person)a;
                 Person c2 = (Person)b;
 
-                if (c1._salary > c2._salary)
+                if (c1._salary < c2._salary)
                     return 1;
 
-                if (c1._salary < c2._salary)
+                if (c1._salary > c2._salary)
                     return -1;
 
                 else
@@ -231,6 +239,35 @@ namespace Employees
         {
             return (IComparer)new sortSNameDescending();
         }
+
+        #endregion
+
+        #region IEnumerator
+        public void Add(Person[] employee)
+        {
+            Array.Resize(ref _people, _people.Length + employee.Length);
+            for (int i = _people.Length, j = 0; i < _people.Length + employee.Length; i++, j++)
+            {
+                _people[i] = employee[j];
+            }
+        }
+
+        public bool MoveNext()
+        {
+            if (i < _people.Length)
+            {
+                i++;
+                return true;
+            }
+            Reset();
+            return false;
+        }
+
+        public void Reset()
+        {
+            i = -1;
+        }
+
         #endregion
     }
 }

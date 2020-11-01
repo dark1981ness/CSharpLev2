@@ -1,0 +1,7 @@
+D:\learning\CSharpLev2\Person\bin\Debug\Person.exe.config
+D:\learning\CSharpLev2\Person\bin\Debug\Person.exe
+D:\learning\CSharpLev2\Person\bin\Debug\Person.pdb
+D:\learning\CSharpLev2\Person\obj\Debug\Person.csprojAssemblyReference.cache
+D:\learning\CSharpLev2\Person\obj\Debug\Person.csproj.CoreCompileInputs.cache
+D:\learning\CSharpLev2\Person\obj\Debug\Person.exe
+D:\learning\CSharpLev2\Person\obj\Debug\Person.pdb

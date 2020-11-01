@@ -13,7 +13,6 @@ namespace Employees
     public partial class Form1 : Form
     {
         List<Person> peopledb;
-
         public bool IsEnable
         {
             get => button1.Enabled;
@@ -24,17 +23,21 @@ namespace Employees
         {
             InitializeComponent();
             peopledb = new List<Person>();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
-            Form form = new Form2();
+            Form2 form = new Form2();
+            form.ReturnBtnState += (s, ev) => IsEnable = true;
+            form.AddEmployeeData += (s, ev) => peopledb.Add(new FixedSalary { Name = ev.Name, Surname = ev.SurName, Patronymic = ev.Patronymic, Age = ev.Age, Salary = ev.Salary });
             form.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = peopledb;
             dataGridView1.Update();
             dataGridView1.Refresh();

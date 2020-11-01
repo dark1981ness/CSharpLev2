@@ -21,3 +21,5 @@ E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.exe
 E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.pdb
 E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.Properties.Resources.resources
 E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.Properties.Resources.resources
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
