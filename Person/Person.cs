@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Person
 {
-    abstract class Person : IComparable
+    abstract class Person : IComparable, IEnumerator
     {
 
         private string _pName;
@@ -15,6 +15,8 @@ namespace Person
         private string _pPatronymic;
         private decimal _pAge;
         private double _salary;
+        Person[] _people;
+        int i = -1;
 
         public string Name
         {
@@ -46,8 +48,14 @@ namespace Person
             set { _salary = value; }
         }
 
+        public object Current => _people[i];
+
         public Person() { }
-       
+
+        public Person(Person[] employee)
+        {
+            _people = employee;
+        }
         public Person(string name, string surname, string patronymic, decimal age, double salary)
         {
             Name = name;
@@ -231,6 +239,32 @@ namespace Person
         {
             return (IComparer)new sortSNameDescending();
         }
+
         #endregion
+
+        public void Add(Person[] employee)
+        {
+            Array.Resize(ref _people, _people.Length + employee.Length);
+            for (int i = _people.Length, j = 0; i < _people.Length + employee.Length; i++, j++)
+            {
+                _people[i] = employee[j];
+            }
+        }
+
+        public bool MoveNext()
+        {
+            if (i < _people.Length)
+            {
+                i++;
+                return true;
+            }
+            Reset();
+            return false;
+        }
+
+        public void Reset()
+        {
+            i = -1;
+        }
     }
 }
