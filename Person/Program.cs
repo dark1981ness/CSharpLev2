@@ -11,11 +11,13 @@ namespace Person
         static Person[] peopledb;
         static void Main(string[] args)
         {
-            peopledb = new Person[3]
+            peopledb = new Person[5]
             {
                 new FixedSalary ("Константин", "Носков", "Иванович", 39, 100500),
                 new FixedSalary ("Владимир", "Путин", "Владимирович", 68, 100500) ,
-                new FixedSalary ("Дмитрий", "Медведев", "Анатольевич", 55, 100500)
+                new FixedSalary ("Дмитрий", "Медведев", "Анатольевич", 55, 100500),
+                new HourlyWage ("Константин", "Носков", "Иванович", 39, 100500, 1, 3, 1500),
+                new HourlyWage ("Константин", "Носков", "Иванович", 39, 100500, 1, 3, 1500)
             };
 
             Array.Sort(peopledb, FixedSalary.sortNameDes());

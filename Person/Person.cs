@@ -15,7 +15,6 @@ namespace Person
         private string _pPatronymic;
         private decimal _pAge;
         private double _salary;
-        private Person[] _people;
 
         public string Name
         {
