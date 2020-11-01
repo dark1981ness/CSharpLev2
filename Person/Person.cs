@@ -242,6 +242,7 @@ namespace Person
 
         #endregion
 
+        #region IEnumerator
         public void Add(Person[] employee)
         {
             Array.Resize(ref _people, _people.Length + employee.Length);
@@ -266,5 +267,7 @@ namespace Person
         {
             i = -1;
         }
+
+        #endregion
     }
 }
