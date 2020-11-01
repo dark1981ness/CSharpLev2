@@ -47,6 +47,58 @@ namespace Employees
             if (cbSalaryType.SelectedItem.ToString() == "Фиксированная")
                 gbSalary.Visible = false;
         }
+
+        private void tbSName_TextChanged(object sender, EventArgs e)
+        {
+            ValidateTextFields();
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+            ValidateTextFields();
+        }
+
+        private void tbPatr_TextChanged(object sender, EventArgs e)
+        {
+            ValidateTextFields();
+        }
+
+        private void tbSalary_TextChanged(object sender, EventArgs e)
+        {
+            ValidateTextFields();
+        }
+
+        private void tbSalary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void tbSName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AllowOnlyChar(e);
+        }
+
+        private void tbName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AllowOnlyChar(e);
+        }
+
+        private void tbPatr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            AllowOnlyChar(e);
+        }
+
+        private void ValidateTextFields()
+        {
+            btnOK.Enabled = !String.IsNullOrWhiteSpace(tbSName.Text) &&
+                            !String.IsNullOrWhiteSpace(tbName.Text) &&
+                            !String.IsNullOrWhiteSpace(tbPatr.Text) &&
+                            !String.IsNullOrWhiteSpace(tbSalary.Text);
+        }
+        private static void AllowOnlyChar(KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 
     public class EmployeeEventArgs : EventArgs

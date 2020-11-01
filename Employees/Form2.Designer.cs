@@ -102,7 +102,7 @@
             this.cbSalaryType.Location = new System.Drawing.Point(132, 204);
             this.cbSalaryType.Name = "cbSalaryType";
             this.cbSalaryType.Size = new System.Drawing.Size(230, 28);
-            this.cbSalaryType.TabIndex = 12;
+            this.cbSalaryType.TabIndex = 5;
             this.cbSalaryType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // gbSalary
@@ -127,7 +127,7 @@
             this.tbDays.Location = new System.Drawing.Point(130, 76);
             this.tbDays.Name = "tbDays";
             this.tbDays.Size = new System.Drawing.Size(230, 26);
-            this.tbDays.TabIndex = 9;
+            this.tbDays.TabIndex = 7;
             // 
             // tbWageRate
             // 
@@ -142,7 +142,7 @@
             this.btnCalc.Location = new System.Drawing.Point(159, 147);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(116, 37);
-            this.btnCalc.TabIndex = 3;
+            this.btnCalc.TabIndex = 9;
             this.btnCalc.Text = "Рассчитать";
             this.btnCalc.UseVisualStyleBackColor = true;
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
@@ -172,7 +172,7 @@
             this.tbHours.Location = new System.Drawing.Point(130, 38);
             this.tbHours.Name = "tbHours";
             this.tbHours.Size = new System.Drawing.Size(230, 26);
-            this.tbHours.TabIndex = 10;
+            this.tbHours.TabIndex = 6;
             // 
             // lblWageRate
             // 
@@ -186,11 +186,12 @@
             // 
             // btnOK
             // 
+            this.btnOK.Enabled = false;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Location = new System.Drawing.Point(151, 512);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 28);
-            this.btnOK.TabIndex = 3;
+            this.btnOK.TabIndex = 11;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -201,7 +202,7 @@
             this.btnCancel.Location = new System.Drawing.Point(255, 512);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 28);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -211,28 +212,34 @@
             this.numericAge.Location = new System.Drawing.Point(132, 159);
             this.numericAge.Name = "numericAge";
             this.numericAge.Size = new System.Drawing.Size(59, 26);
-            this.numericAge.TabIndex = 2;
+            this.numericAge.TabIndex = 4;
             // 
             // tbSalary
             // 
             this.tbSalary.Location = new System.Drawing.Point(132, 469);
             this.tbSalary.Name = "tbSalary";
             this.tbSalary.Size = new System.Drawing.Size(230, 26);
-            this.tbSalary.TabIndex = 1;
+            this.tbSalary.TabIndex = 10;
+            this.tbSalary.TextChanged += new System.EventHandler(this.tbSalary_TextChanged);
+            this.tbSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSalary_KeyPress);
             // 
             // tbPatr
             // 
             this.tbPatr.Location = new System.Drawing.Point(132, 115);
             this.tbPatr.Name = "tbPatr";
             this.tbPatr.Size = new System.Drawing.Size(230, 26);
-            this.tbPatr.TabIndex = 1;
+            this.tbPatr.TabIndex = 3;
+            this.tbPatr.TextChanged += new System.EventHandler(this.tbPatr_TextChanged);
+            this.tbPatr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPatr_KeyPress);
             // 
             // tbName
             // 
             this.tbName.Location = new System.Drawing.Point(132, 76);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(230, 26);
-            this.tbName.TabIndex = 1;
+            this.tbName.TabIndex = 2;
+            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
+            this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             // 
             // tbSName
             // 
@@ -240,6 +247,8 @@
             this.tbSName.Name = "tbSName";
             this.tbSName.Size = new System.Drawing.Size(230, 26);
             this.tbSName.TabIndex = 1;
+            this.tbSName.TextChanged += new System.EventHandler(this.tbSName_TextChanged);
+            this.tbSName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSName_KeyPress);
             // 
             // lblSalaryType
             // 
