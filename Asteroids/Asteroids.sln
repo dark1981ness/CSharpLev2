@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asteroids", "Asteroids.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees", "..\Employees\Employees.csproj", "{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Less6Ex3", "..\..\CSharpLev1\Lesson6\Less6Ex3\Less6Ex3.csproj", "{044FDF99-5D24-4214-9AE7-9F029B12F571}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{044FDF99-5D24-4214-9AE7-9F029B12F571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{044FDF99-5D24-4214-9AE7-9F029B12F571}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{044FDF99-5D24-4214-9AE7-9F029B12F571}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{044FDF99-5D24-4214-9AE7-9F029B12F571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
