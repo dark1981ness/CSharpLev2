@@ -59,13 +59,12 @@ namespace Asteroids
 
         private static void Form_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) _bullet = new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 4), new Point(40, 0), new Size(40, 40), Resources.bullet);
-            if (e.KeyCode == Keys.Up)
-            {
-                _ship.Up();
-                
-            }
+            if (e.KeyCode == Keys.Space) _bullet = new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 4), new Point(40, 0), new Size(40, 40), Resources.bullet);
+            if (e.KeyCode == Keys.Up) _ship.Up();
             if (e.KeyCode == Keys.Down) _ship.Down();
+            if (e.KeyCode == Keys.Left) _ship.Left();
+            if (e.KeyCode == Keys.Right) _ship.Right();
+            if (e.KeyCode == Keys.Up && e.KeyCode == Keys.Right) _ship.FromTest();
         }
 
         private static void Timer_Tick(object sender, EventArgs e)
@@ -119,7 +118,7 @@ namespace Asteroids
                 Buffer.Graphics.DrawString("Energy:" + _ship.Energy, SystemFonts.DefaultFont, Brushes.White, 0, 0);
                 Buffer.Graphics.DrawString("destroyed asteroids:" + _destrCount.DestrCount, SystemFonts.DefaultFont, Brushes.White, 100, 0);
             }
-                
+
             Buffer.Render();
         }
 
@@ -128,8 +127,13 @@ namespace Asteroids
             foreach (BaseObject obj in _objs) obj.Update();
             foreach (AidPack pack in _aidPacks) pack.Update();
             _bullet?.Update();
-            NewMethod();
+            AsteroidCollision();
+            AidPaksCollision();
 
+        }
+
+        private static void AidPaksCollision()
+        {
             for (int i = 0; i < _aidPacks.Length; i++)
             {
                 if (_ship.Collision(_aidPacks[i]))
@@ -139,10 +143,9 @@ namespace Asteroids
                     if (_ship.Energy > 100) _ship.Energy = 100;
                 }
             }
-
         }
 
-        private static void NewMethod()
+        private static void AsteroidCollision()
         {
             for (int i = 0; i < _asteroids.Length; i++)
             {

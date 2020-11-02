@@ -52,6 +52,24 @@ namespace Asteroids.Objects
         {
             if (Pos.Y < Game.Height) Pos = new Point(Pos.X, Pos.Y + Dir.Y);
         }
+
+        public void Right()
+        {
+            if (Pos.X > 0) Pos = new Point(Pos.X + Dir.X, Pos.Y);
+            if (Pos.X > Game.Width - 75) Pos = new Point(Game.Width - 75, Pos.Y);
+        }
+
+        public void Left()
+        {
+            if (Pos.X < Game.Width) Pos = new Point(Pos.X - Dir.X, Pos.Y);
+            if(Pos.X < 10) Pos = new Point(10, Pos.Y);
+
+        }
+
+        public void FromTest()
+        {
+            Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
+        }
         public void Die()
         {
             MessageDie?.Invoke();
