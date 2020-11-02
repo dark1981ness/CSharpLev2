@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace Asteroids
@@ -14,6 +16,9 @@ namespace Asteroids
             form.Show();
             Game.Draw();
             Application.Run(form);
+
+
+
         }
     }
 }

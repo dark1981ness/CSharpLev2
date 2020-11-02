@@ -6,7 +6,7 @@ namespace Asteroids.Objects
     class AidPack : BaseObject
     {
         Image image;
-        public AidPack(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
+        public AidPack(PointF pos, PointF dir, Size size, Image image) : base(pos, dir, size)
         {
             this.image = image;
         }
@@ -21,8 +21,8 @@ namespace Asteroids.Objects
         /// </summary>
         public override void Update()
         {
-            Pos = new Point(Pos.X - Dir.X, Pos.Y);
-            if (Pos.X < 0) Pos = new Point(Game.Width, new Random().Next(50, Game.Height));
+            Pos = new PointF(Pos.X - Dir.X, Pos.Y);
+            if (Pos.X < 0) Pos = new PointF(Game.Width, new Random().Next(50, Game.Height));
         }
     }
 }

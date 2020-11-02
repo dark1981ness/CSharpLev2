@@ -6,18 +6,18 @@ namespace Asteroids.Objects
     class Bullet : BaseObject
     {
         Image image;
-        public Bullet(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
+        public Bullet(PointF pos, PointF dir, Size size, Image image) : base(pos, dir, size)
         {
             this.image = image;
         }
 
         public override void Draw()
         {
-            Game.Buffer.Graphics.DrawImage(image, new Rectangle(Pos.X, Pos.Y, Size.Width, Size.Height));
+            Game.Buffer.Graphics.DrawImage(image, new RectangleF(Pos.X, Pos.Y, Size.Width, Size.Height));
         }
         public override void Update()
         {
-            Pos = new Point(Pos.X + Dir.X, Pos.Y);
+            Pos = new PointF(Pos.X + Dir.X, Pos.Y);
         }
     }
 }

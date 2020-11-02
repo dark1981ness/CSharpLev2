@@ -55,7 +55,7 @@ namespace Asteroids
 
         private static void Form_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space) _bullet = new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 4), new Point(40, 0), new Size(40, 40), Resources.bullet);
+            if (e.KeyCode == Keys.Space) _bullet = new Bullet(new PointF(_ship.Rect.X + 10, _ship.Rect.Y + 4), new PointF(40, 0), new Size(40, 40), Resources.bullet);
             if (e.KeyCode == Keys.Up) _ship.Up();
             if (e.KeyCode == Keys.Down) _ship.Down();
             if (e.KeyCode == Keys.Left) _ship.Left();
@@ -76,19 +76,19 @@ namespace Asteroids
             _aidPacks = new AidPack[3];
             _objs = new BaseObject[30];
             _asteroids = new Asteroid[5];
-            _ship = new Ship(new Point(10, 400), new Point(10, 10), new Size(72, 50), Resources.starship);
+            _ship = new Ship(new PointF(10, 400), new PointF(10, 10), new Size(72, 50), Resources.starship);
             for (int i = 0; i < _asteroids.Length; i++)
             {
-                _asteroids[i] = new Asteroid(new Point(Width, Random.Next(50, (Height - 60))), new Point(15 - i, 15 - i), new Size(100, 100), Resources.asteroid_new);
+                _asteroids[i] = new Asteroid(new PointF(Width, Random.Next(50, (Height - 60))), new PointF(15 - i, 15 - i), new Size(100, 100), Resources.asteroid_new);
 
             }
             for (int i = 0; i < _objs.Length; i++)
             {
-                _objs[i] = new Star(new Point(Width, Random.Next(50, (Height - 60))), new Point(i, 0), new Size(50, 50), Resources.star_new);
+                _objs[i] = new Star(new PointF(Width, Random.Next(50, (Height - 60))), new PointF(i, 0), new Size(50, 50), Resources.star_new);
             }
             for (int i = 0; i < _aidPacks.Length; i++)
             {
-                _aidPacks[i] = new AidPack(new Point(Width, Random.Next(50, (Height - 60))), new Point(10 - i, 0), new Size(30, 30), Resources.firstaidpack);
+                _aidPacks[i] = new AidPack(new PointF(Width, Random.Next(50, (Height - 60))), new PointF(10 - i, 0), new Size(30, 30), Resources.firstaidpack);
             }
         }
 
@@ -135,7 +135,7 @@ namespace Asteroids
                 if (_ship.Collision(_aidPacks[i]))
                 {
                     _ship.AidPack(20);
-                    _aidPacks[i] = new AidPack(new Point(Width, Random.Next(50, (Height - 60))), new Point(10 - i, 0), new Size(30, 30), Resources.firstaidpack); ;
+                    _aidPacks[i] = new AidPack(new PointF(Width, Random.Next(50, (Height - 60))), new PointF(10 - i, 0), new Size(30, 30), Resources.firstaidpack); ;
                     if (_ship.Energy > 100) _ship.Energy = 100;
                 }
             }
@@ -149,7 +149,7 @@ namespace Asteroids
                 _asteroids[i].Update();
                 if (_bullet != null && _bullet.Collision(_asteroids[i]))
                 {
-                    _asteroids[i] = new Asteroid(new Point(Width, Random.Next(0, Height)), new Point(15, 15), new Size(100, 100), Resources.asteroid_new);
+                    _asteroids[i] = new Asteroid(new PointF(Width, Random.Next(0, Height)), new PointF(15, 15), new Size(100, 100), Resources.asteroid_new);
                     _destrCount.AsteroidDestrCount();
                     _bullet = null;
                     continue;

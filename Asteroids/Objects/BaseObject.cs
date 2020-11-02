@@ -6,16 +6,16 @@ namespace Asteroids.Objects
     public delegate void Message();
     abstract class BaseObject : ICollision
     {
-        Point _pos, _dir;
+        PointF _pos, _dir;
         Size _size;
 
-        protected Point Pos
+        protected PointF Pos
         {
             get => _pos;
             set => _pos = value;
         }
 
-        protected Point Dir
+        protected PointF Dir
         {
             get => _dir;
             set => _dir = value;
@@ -27,13 +27,13 @@ namespace Asteroids.Objects
             set => _size = value;
         }
 
-        public Rectangle Rect => new Rectangle(_pos, _size);
+        public RectangleF Rect => new RectangleF(_pos, _size);
 
         public BaseObject()
         {
 
         }
-        public BaseObject(Point pos, Point dir, Size size)
+        public BaseObject(PointF pos, PointF dir, Size size)
         {
             _pos = pos;
             _dir = dir;

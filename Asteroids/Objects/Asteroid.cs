@@ -17,7 +17,7 @@ namespace Asteroids.Objects
         {
 
         }
-        public Asteroid(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
+        public Asteroid(PointF pos, PointF dir, Size size, Image image) : base(pos, dir, size)
         {
             this.image = image;
         }
@@ -30,7 +30,7 @@ namespace Asteroids.Objects
 
         public override void Draw()
         {
-            Game.Buffer.Graphics.DrawImage(image, new Rectangle(Pos.X, Pos.Y, Size.Width, Size.Height));
+            Game.Buffer.Graphics.DrawImage(image, new RectangleF(Pos.X, Pos.Y, Size.Width, Size.Height));
         }
 
         /// <summary>
@@ -39,11 +39,11 @@ namespace Asteroids.Objects
         public override void Update()
         {
             image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
-            if (Pos.X < 0) Dir = new Point(Dir.X * (-1), Dir.Y);
-            if (Pos.X > Game.Width) Dir = new Point(Dir.X * (-1), Dir.Y);
-            if (Pos.Y < 0) Dir = new Point(Dir.X, Dir.Y * (-1));
-            if (Pos.Y > Game.Height) Dir = new Point(Dir.X, Dir.Y * (-1));
+            Pos = new PointF(Pos.X + Dir.X, Pos.Y + Dir.Y);
+            if (Pos.X < 0) Dir = new PointF(Dir.X * (-1), Dir.Y);
+            if (Pos.X > Game.Width) Dir = new PointF(Dir.X * (-1), Dir.Y);
+            if (Pos.Y < 0) Dir = new PointF(Dir.X, Dir.Y * (-1));
+            if (Pos.Y > Game.Height) Dir = new PointF(Dir.X, Dir.Y * (-1));
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Asteroids.Objects
     class Star : BaseObject
     {
         Image image;
-        public Star(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
+        public Star(PointF pos, PointF dir, Size size, Image image) : base(pos, dir, size)
         {
             this.image = image;
         }
@@ -20,8 +20,8 @@ namespace Asteroids.Objects
         /// </summary>
         public override void Update()
         {
-            Pos = new Point(Pos.X - Dir.X, Pos.Y);
-            if (Pos.X < 0) Pos = new Point(Game.Width, Pos.Y);
+            Pos = new PointF(Pos.X - Dir.X, Pos.Y);
+            if (Pos.X < 0) Pos = new PointF(Game.Width, Pos.Y);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Asteroids.Objects
         {
             _energy += n;
         }
-        public Ship(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
+        public Ship(PointF pos, PointF dir, Size size, Image image) : base(pos, dir, size)
         {
             this.image = image;
         }
@@ -46,29 +46,29 @@ namespace Asteroids.Objects
         }
         public void Up()
         {
-            if (Pos.Y > 0) Pos = new Point(Pos.X, Pos.Y - Dir.Y);
+            if (Pos.Y > 0) Pos = new PointF(Pos.X, Pos.Y - Dir.Y);
         }
         public void Down()
         {
-            if (Pos.Y < Game.Height) Pos = new Point(Pos.X, Pos.Y + Dir.Y);
+            if (Pos.Y < Game.Height) Pos = new PointF(Pos.X, Pos.Y + Dir.Y);
         }
 
         public void Right()
         {
-            if (Pos.X > 0) Pos = new Point(Pos.X + Dir.X, Pos.Y);
-            if (Pos.X > Game.Width - 75) Pos = new Point(Game.Width - 75, Pos.Y);
+            if (Pos.X > 0) Pos = new PointF(Pos.X + Dir.X, Pos.Y);
+            if (Pos.X > Game.Width - 75) Pos = new PointF(Game.Width - 75, Pos.Y);
         }
 
         public void Left()
         {
-            if (Pos.X < Game.Width) Pos = new Point(Pos.X - Dir.X, Pos.Y);
-            if(Pos.X < 10) Pos = new Point(10, Pos.Y);
+            if (Pos.X < Game.Width) Pos = new PointF(Pos.X - Dir.X, Pos.Y);
+            if(Pos.X < 10) Pos = new PointF(10, Pos.Y);
 
         }
 
         public void FromTest()
         {
-            Pos = new Point(Pos.X + Dir.X + 10, Pos.Y + Dir.Y + 10);
+            Pos = new PointF(Pos.X + Dir.X + 10, Pos.Y + Dir.Y + 10);
            
         }
         public void Die()
