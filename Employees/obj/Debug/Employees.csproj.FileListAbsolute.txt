@@ -19,3 +19,4 @@ D:\learning\CSharpLev2\Employees\obj\Debug\Employees.csproj.GenerateResource.cac
 D:\learning\CSharpLev2\Employees\obj\Debug\Employees.csproj.CoreCompileInputs.cache
 D:\learning\CSharpLev2\Employees\obj\Debug\Employees.exe
 D:\learning\CSharpLev2\Employees\obj\Debug\Employees.pdb
+D:\learning\CSharpLev2\Employees\obj\Debug\Employees.csprojAssemblyReference.cache
