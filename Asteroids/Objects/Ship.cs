@@ -68,7 +68,8 @@ namespace Asteroids.Objects
 
         public void FromTest()
         {
-            Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
+            Pos = new Point(Pos.X + Dir.X + 10, Pos.Y + Dir.Y + 10);
+           
         }
         public void Die()
         {

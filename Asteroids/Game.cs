@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using Asteroids.Objects;
@@ -80,7 +76,7 @@ namespace Asteroids
             _aidPacks = new AidPack[3];
             _objs = new BaseObject[30];
             _asteroids = new Asteroid[5];
-            _ship = new Ship(new Point(10, 400), new Point(5, 5), new Size(72, 50), Resources.starship);
+            _ship = new Ship(new Point(10, 400), new Point(10, 10), new Size(72, 50), Resources.starship);
             for (int i = 0; i < _asteroids.Length; i++)
             {
                 _asteroids[i] = new Asteroid(new Point(Width, Random.Next(50, (Height - 60))), new Point(15 - i, 15 - i), new Size(100, 100), Resources.asteroid_new);
@@ -166,6 +162,7 @@ namespace Asteroids
                 {
                     var rnd = new Random();
                     _ship?.EnergyLow(rnd.Next(1, 10));
+                    
                 }
 
                 if (_ship.Energy <= 0) _ship?.Die();
