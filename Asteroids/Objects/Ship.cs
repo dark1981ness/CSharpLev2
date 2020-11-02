@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Asteroids.Objects
 {
-    
+
     class Ship : BaseObject
     {
         public static event Message MessageDie;
@@ -15,11 +15,20 @@ namespace Asteroids.Objects
         Image image;
 
         private int _energy = 100;
-        public int Energy => _energy;
+        public int Energy
+        {
+            get => _energy;
+            set => _energy = value;
+        }
 
         public void EnergyLow(int n)
         {
             _energy -= n;
+        }
+
+        public void AidPack(int n)
+        {
+            _energy += n;
         }
         public Ship(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
         {

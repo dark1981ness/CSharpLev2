@@ -29,6 +29,10 @@ namespace Asteroids.Objects
 
         public Rectangle Rect => new Rectangle(_pos, _size);
 
+        public BaseObject()
+        {
+
+        }
         public BaseObject(Point pos, Point dir, Size size)
         {
             _pos = pos;

@@ -5,16 +5,33 @@ namespace Asteroids.Objects
     class Asteroid : BaseObject
     {
         Image image;
+
+        private int _destrCount = 0;
+        public int DestrCount
+        {
+            get => _destrCount;
+           
+        }
+
+        public Asteroid()
+        {
+
+        }
         public Asteroid(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
         {
             this.image = image;
+        }
+
+
+        public void AsteroidDestrCount()
+        {
+           _destrCount++;
         }
 
         public override void Draw()
         {
             Game.Buffer.Graphics.DrawImage(image, new Rectangle(Pos.X, Pos.Y, Size.Width, Size.Height));
         }
-
 
         /// <summary>
         /// Переопределенный абстрактный метод родителя

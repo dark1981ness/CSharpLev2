@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="Interfaces\ICollision.cs" />
+    <Compile Include="Objects\AidPack.cs" />
     <Compile Include="Objects\Asteroid.cs" />
     <Compile Include="Objects\BaseObject.cs" />
     <Compile Include="Objects\Bullet.cs" />
@@ -76,6 +77,7 @@
     <Content Include="Images\bullet.png" />
     <Content Include="Images\star.png" />
     <Content Include="Images\star_new.png" />
+    <None Include="Resources\firstaidpack.png" />
     <None Include="Resources\starship.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
