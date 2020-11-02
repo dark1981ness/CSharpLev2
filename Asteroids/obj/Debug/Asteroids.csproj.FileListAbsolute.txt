@@ -8,7 +8,6 @@ E:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.pdb
 D:\learning\CSharpLev2\Asteroids\bin\Debug\Asteroids.exe.config
 D:\learning\CSharpLev2\Asteroids\bin\Debug\Asteroids.exe
 D:\learning\CSharpLev2\Asteroids\bin\Debug\Asteroids.pdb
-D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csprojAssemblyReference.cache
 D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.CoreCompileInputs.cache
 D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.exe
 D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.pdb
@@ -23,3 +22,4 @@ E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.Properties.Resour
 E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
 D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.Properties.Resources.resources
 D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csprojAssemblyReference.cache

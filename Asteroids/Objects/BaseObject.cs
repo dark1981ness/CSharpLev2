@@ -3,6 +3,7 @@ using System.Drawing;
 
 namespace Asteroids.Objects
 {
+    public delegate void Message();
     abstract class BaseObject : ICollision
     {
         Point _pos, _dir;

@@ -76,6 +76,7 @@
     <Content Include="Images\bullet.png" />
     <Content Include="Images\star.png" />
     <Content Include="Images\star_new.png" />
+    <None Include="Resources\starship.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

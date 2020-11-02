@@ -17,7 +17,7 @@ namespace Asteroids.Objects
         }
         public override void Update()
         {
-            Pos = new Point(Pos.X + 3, Pos.Y);
+            Pos = new Point(Pos.X + Dir.X, Pos.Y);
         }
     }
 }

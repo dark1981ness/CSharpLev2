@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace Asteroids.Objects
 {
+    
     class Ship : BaseObject
     {
+        public static event Message MessageDie;
+
+        Image image;
+
         private int _energy = 100;
         public int Energy => _energy;
 
@@ -16,30 +21,31 @@ namespace Asteroids.Objects
         {
             _energy -= n;
         }
-        public Ship(Point pos, Point dir, Size size) : base(pos, dir, size)
+        public Ship(Point pos, Point dir, Size size, Image image) : base(pos, dir, size)
         {
+            this.image = image;
         }
 
         public override void Draw()
         {
-            Game.Buffer.Graphics.FillEllipse(Brushes.Wheat, Pos.X, Pos.Y, Size.Width, Size.Height);
+            Game.Buffer.Graphics.DrawImage(image, Pos.X, Pos.Y, Size.Width, Size.Height);
         }
 
         public override void Update()
         {
 
         }
-        public void UP()
+        public void Up()
         {
-
+            if (Pos.Y > 0) Pos = new Point(Pos.X, Pos.Y - Dir.Y);
         }
         public void Down()
         {
-
+            if (Pos.Y < Game.Height) Pos = new Point(Pos.X, Pos.Y + Dir.Y);
         }
         public void Die()
         {
-
+            MessageDie?.Invoke();
         }
     }
 }
