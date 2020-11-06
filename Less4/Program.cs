@@ -8,8 +8,17 @@ using System.Xml;
 
 namespace Less4
 {
+    /// <summary>
+    /// Класс для вспомогательных методов
+    /// </summary>
     public static class Ext
     {
+        /// <summary>
+        /// Вспомогательный метод для подсчета одинаковых элементов в коллекции
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="myNum"></param>
+        /// <returns></returns>
         public static Dictionary<T, int> UniquesValues<T>(this ICollection<T> myNum)
         {
             Dictionary<T, int> keyValuePairs = new Dictionary<T, int>();
@@ -80,8 +89,8 @@ namespace Less4
         private static void Ex2()
         {
             List<int> myNum = new List<int>() { 1, 2, 5, 6, 7, 8, 9, 2, 2, 3, 3, 4, 5, 5, 6, 7, 8, 7, 7, 7, 13 };
-            Dictionary<int, int> keyValuePairs = myNum.UniquesValues();
-            foreach (KeyValuePair<int, int> myitem in keyValuePairs)
+            var keyValuePairs = myNum.UniquesValues();
+            foreach (var myitem in keyValuePairs)
             {
                 Console.WriteLine($"Число {myitem.Key} встречается {myitem.Value} раз");
             }
@@ -91,6 +100,16 @@ namespace Less4
             foreach (int num in myNum.Distinct())
             {
                 Console.WriteLine($"Число {num} встречается {myNum.Where(x => x == num).Count()} раз");
+            }
+
+            Console.WriteLine();
+            List<string> stringList = new List<string>() {
+                "adf", "dgs", "asd", " adf", "0afs9", "gfd23", "adf", "asdf"
+            };
+            var keyValuePairsString = stringList.UniquesValues();
+            foreach (var myitem in keyValuePairsString)
+            {
+                Console.WriteLine($"Число {myitem.Key} встречается {myitem.Value} раз");
             }
         }
     }
