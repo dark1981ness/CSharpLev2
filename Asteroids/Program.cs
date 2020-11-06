@@ -17,8 +17,6 @@ namespace Asteroids
             Game.Draw();
             Application.Run(form);
 
-
-
         }
     }
 }
