@@ -8,11 +8,34 @@ using System.Xml;
 
 namespace Less4
 {
+    public static class Ext
+    {
+        public static Dictionary<T, int> UniquesValues<T>(this ICollection<T> myNum)
+        {
+            Dictionary<T, int> keyValuePairs = new Dictionary<T, int>();
+
+            foreach (T num in myNum)
+            {
+                if (keyValuePairs.ContainsKey(num))
+                {
+                    keyValuePairs[num]++;
+                }
+                else
+                {
+                    keyValuePairs[num] = 1;
+                }
+            }
+
+            return keyValuePairs;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Ex3();
+            Ex2();
+            //Ex3();
         }
 
         private static void Ex3()
@@ -50,6 +73,25 @@ namespace Less4
             }
         }
 
+        //Дана коллекция List<T>, требуется подсчитать, сколько раз каждый элемент встречается в данной коллекции:
+        //а) для целых чисел;
+        //б) *для обобщенной коллекции;
+        //в) *используя Linq.
+        private static void Ex2()
+        {
+            List<int> myNum = new List<int>() { 1, 2, 5, 6, 7, 8, 9, 2, 2, 3, 3, 4, 5, 5, 6, 7, 8, 7, 7, 7, 13 };
+            Dictionary<int, int> keyValuePairs = myNum.UniquesValues();
+            foreach (KeyValuePair<int, int> myitem in keyValuePairs)
+            {
+                Console.WriteLine($"Число {myitem.Key} встречается {myitem.Value} раз");
+            }
 
+            Console.WriteLine();
+            Console.WriteLine($"ввввввввввввв\n");
+            foreach (int num in myNum.Distinct())
+            {
+                Console.WriteLine($"Число {num} встречается {myNum.Where(x => x == num).Count()} раз");
+            }
+        }
     }
 }
