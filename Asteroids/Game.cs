@@ -62,7 +62,6 @@ namespace Asteroids
             if (e.KeyCode == Keys.Down) _ship.Down();
             if (e.KeyCode == Keys.Left) _ship.Left();
             if (e.KeyCode == Keys.Right) _ship.Right();
-            if (e.KeyCode == Keys.Up && e.KeyCode == Keys.Right) _ship.FromTest();
         }
 
         private static void Timer_Tick(object sender, EventArgs e)
@@ -73,7 +72,6 @@ namespace Asteroids
 
         public static void Load()
         {
-            //Random random = new Random();
             _asteroidColCount = Random.Next(5, 15);
             _destrCount = new Asteroid();
             _aidPacks = new AidPack[3];

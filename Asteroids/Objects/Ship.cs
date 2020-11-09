@@ -66,12 +66,7 @@ namespace Asteroids.Objects
             if(Pos.X < 10) Pos = new PointF(10, Pos.Y);
 
         }
-
-        public void FromTest()
-        {
-            Pos = new PointF(Pos.X + Dir.X + 10, Pos.Y + Dir.Y + 10);
-           
-        }
+        
         public void Die()
         {
             MessageDie?.Invoke();
