@@ -71,14 +71,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\firstaidpack.png" />
+    <None Include="Resources\starship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\asteroid.png" />
     <Content Include="Images\asteroid_new.png" />
     <Content Include="Images\background.jpg" />
-    <Content Include="Images\asteroid.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\star.png" />
     <Content Include="Images\star_new.png" />
-    <None Include="Resources\firstaidpack.png" />
-    <None Include="Resources\starship.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

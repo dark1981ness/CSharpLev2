@@ -51,6 +51,7 @@ namespace Asteroids.Objects
         public void Down()
         {
             if (Pos.Y < Game.Height) Pos = new PointF(Pos.X, Pos.Y + Dir.Y);
+            if (Pos.Y > Game.Height - 55) Pos = new PointF(Pos.X, Game.Height - 55);
         }
 
         public void Right()
