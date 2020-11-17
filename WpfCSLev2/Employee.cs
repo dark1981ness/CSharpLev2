@@ -13,6 +13,10 @@ namespace WpfCSLev2
         private DateTime _birthday;
         private byte _age;
         private float _salary;
+        private string _position;
+        private string _phone;
+        private string _email;
+
         public int Id
         {
             get => _id;
@@ -75,6 +79,53 @@ namespace WpfCSLev2
                 _salary = value;
                 OnPropertyChanged();
             }
+        }
+
+        public string Position
+        {
+            get => _position;
+            set
+            {
+                _position = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Phone
+        {
+            get => _phone;
+            set
+            {
+                _phone = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                _email = value;
+                OnPropertyChanged();
+            }
+        }
+        public Employee()
+        {
+
+        }
+        public Employee(int id, string name, string surname, string patronymic, DateTime birthday, byte age, float salary, string position, string phone, string email)
+        {
+            Id = id;
+            Name = name;
+            Surname = surname;
+            Patronymic = patronymic;
+            Birthday = birthday;
+            Age = age;
+            Salary = salary;
+            Position = position;
+            Phone = phone;
+            Email = email;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

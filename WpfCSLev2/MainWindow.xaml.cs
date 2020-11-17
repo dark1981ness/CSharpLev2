@@ -26,7 +26,21 @@ namespace WpfCSLev2
         public MainWindow()
         {
             InitializeComponent();
-            GetD.Add(new Employee { Id = 1, Name = "Константин", Surname = "Носков", Patronymic = "Иванович", Birthday = new DateTime(1981, 12, 29), Age = 38, Salary = 120000 });
+            this.DataContext = this;
+
+            GetD.Add(new Employee
+            { 
+                Id = 1,
+                Name = "Константин",
+                Surname = "Носков",
+                Patronymic = "Иванович",
+                Birthday = new DateTime(1981, 12, 29),
+                Age = 38,
+                Salary = 120000,
+                Position="Системный администратор",
+                Phone ="1916",
+                Email="mymail@somedomain.ru"
+            });
             GetDepartment.Add(new Department { Name = "СКТ" });
             GetDepartment.Add(new Department { Name = "бухгалтерия" });
             GetDepartment.Add(new Department { Name = "водители" });
@@ -60,26 +74,34 @@ namespace WpfCSLev2
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = sender as ListViewItem;
-            //switch (item.Name)
-            //{
-            //    case "Administration":
-            //        DataContext = new MenuNavViewModel(1);
-            //        break;
-            //    case "Home":
-            //        DataContext = new MenuNavViewModel(0);
-            //        break;
-            //    case "Employees":
-            //        DataContext = new MenuNavViewModel(2);
-            //        break;
-            //    case "Scheduller":
-            //        DataContext = new MenuNavViewModel(3);
-            //        break;
-            //    case "Logout":
-            //        LoginWindow loginWindow = new LoginWindow();
-            //        loginWindow.Show();
-            //        this.Close();
-            //        break;
-            //}
+            switch (item.Name)
+            {
+                
+                case "Home":
+                    AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
+                    addDepartmentForm.ShowDialog();
+                    if (addDepartmentForm.DialogResult.HasValue && addDepartmentForm.DialogResult.Value)
+                    {
+                        //GetDepartment.Add(addDepartmentForm);
+                    }
+                    break;
+                case "Employees":
+                    AddEmp();
+                    break;
+                case "Logout":
+                    Application.Current.Shutdown();
+                    break;
+            }
+        }
+
+        private void AddEmp()
+        {
+            AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
+            addEmployeeForm.ShowDialog();
+            if (addEmployeeForm.DialogResult.HasValue && addEmployeeForm.DialogResult.Value)
+            {
+                this.GetD.Add(addEmployeeForm.Employee);
+            }
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
@@ -106,5 +128,6 @@ namespace WpfCSLev2
             scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
     }
 }

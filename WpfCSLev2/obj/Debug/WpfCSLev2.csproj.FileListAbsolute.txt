@@ -14,5 +14,8 @@ D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\WpfCSLev2.csproj.GenerateResource.cac
 D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\WpfCSLev2.csproj.CoreCompileInputs.cache
 D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\WpfCSLev2.exe
 D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\WpfCSLev2.pdb
-D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\WpfCSLev2.csprojAssemblyReference.cache
+D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\AddDepartmentForm.g.cs
+D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\AddEmployeeForm.g.cs
+D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\AddDepartmentForm.baml
+D:\learning\CSharpLev2\WpfCSLev2\obj\Debug\AddEmployeeForm.baml

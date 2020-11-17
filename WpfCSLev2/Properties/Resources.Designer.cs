@@ -83,6 +83,16 @@ namespace WpfCSLev2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avatar {
+            get {
+                object obj = ResourceManager.GetObject("avatar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_icon {
             get {
                 object obj = ResourceManager.GetObject("close_icon", resourceCulture);
@@ -133,6 +143,16 @@ namespace WpfCSLev2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap header_2 {
+            get {
+                object obj = ResourceManager.GetObject("header_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HomeMenuIcon {
             get {
                 object obj = ResourceManager.GetObject("HomeMenuIcon", resourceCulture);
@@ -156,6 +176,16 @@ namespace WpfCSLev2.Properties {
         internal static System.Drawing.Bitmap icons8_menu_104 {
             get {
                 object obj = ResourceManager.GetObject("icons8_menu_104", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap listitembgdflt {
+            get {
+                object obj = ResourceManager.GetObject("listitembgdflt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
