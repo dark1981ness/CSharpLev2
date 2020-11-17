@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesss3", "..\Lesss3\Lesss3.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees", "..\Employees\Employees.csproj", "{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCSLev2", "..\WpfCSLev2\WpfCSLev2.csproj", "{B891636E-F17C-479C-86FA-9108C6CAE720}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A610AEF0-3A89-484B-BCD5-A0F99CAF827F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B891636E-F17C-479C-86FA-9108C6CAE720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B891636E-F17C-479C-86FA-9108C6CAE720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B891636E-F17C-479C-86FA-9108C6CAE720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B891636E-F17C-479C-86FA-9108C6CAE720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

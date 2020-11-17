@@ -22,3 +22,4 @@ E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.Properties.Resour
 E:\learning\C#\backup\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
 D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.Properties.Resources.resources
 D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
+D:\learning\CSharpLev2\Asteroids\obj\Debug\Asteroids.csprojAssemblyReference.cache
