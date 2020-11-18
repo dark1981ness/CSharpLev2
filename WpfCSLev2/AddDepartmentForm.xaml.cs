@@ -19,6 +19,7 @@ namespace WpfCSLev2
     /// </summary>
     public partial class AddDepartmentForm : Window
     {
+        public string DepName { get; set; }
         public AddDepartmentForm()
         {
             InitializeComponent();
@@ -39,6 +40,19 @@ namespace WpfCSLev2
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DepName = tbDep.Text;
+            this.DialogResult = true;
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
             this.Close();
         }
     }

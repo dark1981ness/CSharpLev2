@@ -76,31 +76,25 @@ namespace WpfCSLev2
             var item = sender as ListViewItem;
             switch (item.Name)
             {
-                
                 case "Home":
                     AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
                     addDepartmentForm.ShowDialog();
                     if (addDepartmentForm.DialogResult.HasValue && addDepartmentForm.DialogResult.Value)
                     {
-                        //GetDepartment.Add(addDepartmentForm);
+                        GetDepartment.Add(new Department { Name = addDepartmentForm.DepName });
                     }
                     break;
                 case "Employees":
-                    AddEmp();
+                    AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
+                    addEmployeeForm.ShowDialog();
+                    if (addEmployeeForm.DialogResult.HasValue && addEmployeeForm.DialogResult.Value)
+                    {
+                        this.GetD.Add(addEmployeeForm.Employee);
+                    }
                     break;
                 case "Logout":
                     Application.Current.Shutdown();
                     break;
-            }
-        }
-
-        private void AddEmp()
-        {
-            AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
-            addEmployeeForm.ShowDialog();
-            if (addEmployeeForm.DialogResult.HasValue && addEmployeeForm.DialogResult.Value)
-            {
-                this.GetD.Add(addEmployeeForm.Employee);
             }
         }
 
