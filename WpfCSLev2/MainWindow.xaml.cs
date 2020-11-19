@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 
@@ -12,31 +11,15 @@ namespace WpfCSLev2
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Employee> GetD { get; } = new ObservableCollection<Employee>();
-        public static ObservableCollection<Department> GetDepartment { get; } = new ObservableCollection<Department>();
+        EmployeeViewModel employeeViewModel = new EmployeeViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = this;
-
-            GetD.Add(new Employee
-            { 
-                Id = 1,
-                Name = "Константин",
-                Surname = "Носков",
-                Patronymic = "Иванович",
-                Birthday = new DateTime(1981, 12, 29),
-                Age = 38,
-                Salary = 120000,
-                Position="Системный администратор",
-                Phone ="1916",
-                Email="mymail@somedomain.ru"
-            });
-            GetDepartment.Add(new Department { Name = "СКТ" });
-            GetDepartment.Add(new Department { Name = "бухгалтерия" });
-            GetDepartment.Add(new Department { Name = "водители" });
+            
+            this.DataContext = employeeViewModel;
         }
 
+        #region window title bar
         private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2 && this.WindowState == WindowState.Normal)
@@ -48,45 +31,6 @@ namespace WpfCSLev2
                 this.WindowState = WindowState.Normal;
             }
             this.DragMove();
-        }
-
-        private void CloseMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            OpenMenuBtn.Visibility = Visibility.Visible;
-            CloseMenuBtn.Visibility = Visibility.Collapsed;
-        }
-
-        private void OpenMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            OpenMenuBtn.Visibility = Visibility.Collapsed;
-            CloseMenuBtn.Visibility = Visibility.Visible;
-        }
-
-        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var item = sender as ListViewItem;
-            switch (item.Name)
-            {
-                case "Home":
-                    AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
-                    addDepartmentForm.ShowDialog();
-                    if (addDepartmentForm.DialogResult.HasValue && addDepartmentForm.DialogResult.Value)
-                    {
-                        GetDepartment.Add(new Department { Name = addDepartmentForm.DepName });
-                    }
-                    break;
-                case "Employees":
-                    AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
-                    addEmployeeForm.ShowDialog();
-                    if (addEmployeeForm.DialogResult.HasValue && addEmployeeForm.DialogResult.Value)
-                    {
-                        this.GetD.Add(addEmployeeForm.Employee);
-                    }
-                    break;
-                case "Logout":
-                    Application.Current.Shutdown();
-                    break;
-            }
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
@@ -106,6 +50,51 @@ namespace WpfCSLev2
         {
             Application.Current.Shutdown();
         }
+
+        #endregion
+
+        #region slide menu
+        private void CloseMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenMenuBtn.Visibility = Visibility.Visible;
+            CloseMenuBtn.Visibility = Visibility.Collapsed;
+        }
+
+        private void OpenMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenMenuBtn.Visibility = Visibility.Collapsed;
+            CloseMenuBtn.Visibility = Visibility.Visible;
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            switch (item.Name)
+            {
+                case "Home":
+                    AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
+                    addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
+                    addDepartmentForm.ShowDialog();
+                    if (addDepartmentForm.DialogResult.HasValue && addDepartmentForm.DialogResult.Value)
+                    {
+                        employeeViewModel.GetDepartment.Add(addDepartmentForm.DepInfo);
+                    }
+                    break;
+                case "Employees":
+                    AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
+                    addEmployeeForm.ShowDialog();
+                    if (addEmployeeForm.DialogResult.HasValue && addEmployeeForm.DialogResult.Value)
+                    {
+                        employeeViewModel.GetEmployee.Add(addEmployeeForm.Employee);
+                    }
+                    break;
+                case "Logout":
+                    Application.Current.Shutdown();
+                    break;
+            }
+        }
+
+        #endregion
 
         private void MainCC_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {

@@ -6,7 +6,7 @@ namespace WpfCSLev2
 {
     public class Employee : INotifyPropertyChanged
     {
-        private int _id;
+        private int _departmentid;
         private string _name;
         private string _surname;
         private string _patronymic;
@@ -17,12 +17,12 @@ namespace WpfCSLev2
         private string _phone;
         private string _email;
 
-        public int Id
+        public int DepartmentId
         {
-            get => _id;
+            get => _departmentid;
             set
             {
-                _id = value;
+                _departmentid = value;
                 OnPropertyChanged();
             }
         }
@@ -110,24 +110,7 @@ namespace WpfCSLev2
                 OnPropertyChanged();
             }
         }
-        public Employee()
-        {
-
-        }
-        public Employee(int id, string name, string surname, string patronymic, DateTime birthday, byte age, float salary, string position, string phone, string email)
-        {
-            Id = id;
-            Name = name;
-            Surname = surname;
-            Patronymic = patronymic;
-            Birthday = birthday;
-            Age = age;
-            Salary = salary;
-            Position = position;
-            Phone = phone;
-            Email = email;
-        }
-
+       
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")

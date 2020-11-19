@@ -19,7 +19,7 @@ namespace WpfCSLev2
     /// </summary>
     public partial class AddDepartmentForm : Window
     {
-        public string DepName { get; set; }
+        public Department DepInfo { get; set; }
         public AddDepartmentForm()
         {
             InitializeComponent();
@@ -43,17 +43,46 @@ namespace WpfCSLev2
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.DepName = tbDep.Text;
-            this.DialogResult = true;
+            try
+            {
+                DepInfo = new Department
+                {
+                    Id = Convert.ToInt32(this.depId.Text),
+                    Name = this.depName.Text
+                    
+                };
+                this.DialogResult = true;
+            }
+            catch (Exception)
+            {
+                this.DialogResult = false;
+            }
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
             this.Close();
+        }
+
+        private void ChangeDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            if(depListView.SelectedItem != null)
+            {
+                depId.Text = (depListView.SelectedItem as Department).Id.ToString();
+                depName.Text = (depListView.SelectedItem as Department).Name.ToString();
+            }
+        }
+
+        private void RemoveDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            if (depListView.SelectedItem != null)
+            {
+                
+            }
         }
     }
 }

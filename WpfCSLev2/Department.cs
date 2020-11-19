@@ -6,10 +6,21 @@ namespace WpfCSLev2
     public class Department : INotifyPropertyChanged
     {
         private string _name;
+        private int _id;
         public string Name
         {
             get => _name;
             set { _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
                 OnPropertyChanged();
             }
         }
