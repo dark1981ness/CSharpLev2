@@ -169,10 +169,9 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Rectangle RadiusX="20" RadiusY="20" Width="75" StrokeThickness="3" Height="100" HorizontalAlignment="Left" Margin="5,0,5,0" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6">
                             <Rectangle.Stroke>
@@ -196,10 +195,9 @@
                         </TextBlock>
                         <TextBlock x:Name="uPosition" Grid.Column="1" Grid.Row="1" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Arial Black"
                                    Text="{Binding SelectedItem.Position, ElementName=MainGrid, StringFormat=Должность: {0}}"/>
-                        <TextBlock x:Name="uDepartment" Grid.Column="1" Grid.Row="2" Margin="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Arial Black"/>
-                        <TextBlock x:Name="localPhoneNumber" Grid.Column="1" Grid.Row="3" Margin="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Arial Black"
+                        <TextBlock x:Name="localPhoneNumber" Grid.Column="1" Grid.Row="2" Margin="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Arial Black"
                                    Text="{Binding SelectedItem.Phone, ElementName=MainGrid, StringFormat=Местный тел: {0}}"/>
-                        <TextBlock x:Name="email" Grid.Column="1" Grid.Row="4" Margin="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Arial Black"
+                        <TextBlock x:Name="email" Grid.Column="1" Grid.Row="3" Margin="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Arial Black"
                                    Text="{Binding SelectedItem.Email, ElementName=MainGrid, StringFormat=E-mail: {0}}"/>
                     </Grid>
                 </Border>

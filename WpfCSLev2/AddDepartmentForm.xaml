@@ -90,6 +90,7 @@
                     <Label Content="Список отделов" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" 
                             VerticalAlignment="Top" Foreground="White" FontSize="14"/>
                     <ListView x:Name="depListView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="{Binding ActualWidth, ElementName=wrapPanel, Mode=OneWay}" Margin="0,0,0,10" Background="{x:Null}"
+                              ItemsSource="{Binding GetDepartment}"
                               ItemTemplate="{StaticResource listViewItem}"
                               ItemContainerStyle="{StaticResource EmployeesListViewItem}"/>
                     <Button Content="Закрыть" Grid.Row="2" Grid.Column="2" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center" Click="Button_Cancel_Click"/>

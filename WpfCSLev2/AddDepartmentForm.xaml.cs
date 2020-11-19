@@ -19,10 +19,12 @@ namespace WpfCSLev2
     /// </summary>
     public partial class AddDepartmentForm : Window
     {
+        EmployeeViewModel employeeViewModel = new EmployeeViewModel();
         public Department DepInfo { get; set; }
         public AddDepartmentForm()
         {
             InitializeComponent();
+            this.DataContext = employeeViewModel;
         }
 
         private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
@@ -81,7 +83,7 @@ namespace WpfCSLev2
         {
             if (depListView.SelectedItem != null)
             {
-                
+                employeeViewModel.GetDepartment.Remove(depListView.SelectedItem as Department);
             }
         }
     }

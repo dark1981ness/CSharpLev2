@@ -73,7 +73,7 @@ namespace WpfCSLev2
             {
                 case "Home":
                     AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
-                    addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
+                    //addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
                     addDepartmentForm.ShowDialog();
                     if (addDepartmentForm.DialogResult.HasValue && addDepartmentForm.DialogResult.Value)
                     {
