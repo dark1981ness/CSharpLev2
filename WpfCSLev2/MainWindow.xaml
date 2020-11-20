@@ -81,7 +81,7 @@
         </Grid>
         
         <!-- main content-->
-        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden"
                       x:Name="MainCC" Margin="70,30,0,0" PreviewMouseWheel="MainCC_PreviewMouseWheel"
                       Background="#FF252526">
             <Grid x:Name="MainCCC" Margin="0">
@@ -112,7 +112,8 @@
                               AutoGenerateColumns="False" CanUserAddRows="True"
                               ItemsSource="{Binding GetEmployee}" Margin="5,5,5,2" Background="#FF333333"
                               Foreground="White" BorderBrush="{x:Null}" HeadersVisibility="Column"
-                              GridLinesVisibility="None" RowBackground="#FF333333" ColumnHeaderStyle="{DynamicResource MainGridColumnHeaderStyle}" IsReadOnly="True">
+                              GridLinesVisibility="None" RowBackground="#FF333333"
+                              ColumnHeaderStyle="{DynamicResource MainGridColumnHeaderStyle}" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" Width="auto"/>
                             <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="auto"/>
@@ -120,7 +121,7 @@
                             <DataGridTemplateColumn Header="Дата рождения" CanUserSort="True">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <DatePicker SelectedDate="{Binding Birthday}" Width="auto"/>
+                                        <DatePicker SelectedDate="{Binding Birthday}" Width="auto" IsEnabled="False"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -220,9 +221,9 @@
                           Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
                           Background="{x:Null}"
                           BorderThickness="0"
-                          ItemsSource="{Binding GetDepartment}"
+                          ItemsSource="{Binding GetDepartment, UpdateSourceTrigger=Default}"
                           ItemTemplate="{StaticResource listViewItem}"
-                          ItemContainerStyle="{StaticResource EmployeesListViewItem}"
+                          ItemContainerStyle="{StaticResource EmployeesListViewItem}" MouseDoubleClick="employeeView_MouseDoubleClick"
                      />
                 </Border>
             </Grid>

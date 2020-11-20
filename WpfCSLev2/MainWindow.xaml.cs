@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
+using System.Linq;
 
 
 namespace WpfCSLev2
@@ -73,12 +73,10 @@ namespace WpfCSLev2
             {
                 case "Home":
                     AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
-                    //addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
-                    addDepartmentForm.ShowDialog();
-                    if (addDepartmentForm.DialogResult.HasValue && addDepartmentForm.DialogResult.Value)
-                    {
-                        employeeViewModel.GetDepartment.Add(addDepartmentForm.DepInfo);
-                    }
+                    addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
+                    addDepartmentForm.AddDepData += (s, ev) => employeeViewModel.GetDepartment.Add(new Department { Id = ev.Id, Name = ev.Name });
+                    addDepartmentForm.Show();
+                    
                     break;
                 case "Employees":
                     AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
@@ -103,5 +101,9 @@ namespace WpfCSLev2
             e.Handled = true;
         }
 
+        private void employeeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }

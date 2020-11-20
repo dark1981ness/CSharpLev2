@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace WpfCSLev2
 {
-    public class EmployeeViewModel : INotifyPropertyChanged
+    public class EmployeeViewModel
     {
         public ObservableCollection<Employee> GetEmployee { get; set; } = new ObservableCollection<Employee>() {
             new Employee
@@ -27,10 +27,5 @@ namespace WpfCSLev2
             new Department {Id = 3, Name = "водители" }
         };
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }

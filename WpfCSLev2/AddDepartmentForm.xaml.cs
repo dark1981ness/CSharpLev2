@@ -19,12 +19,14 @@ namespace WpfCSLev2
     /// </summary>
     public partial class AddDepartmentForm : Window
     {
-        EmployeeViewModel employeeViewModel = new EmployeeViewModel();
+        
         public Department DepInfo { get; set; }
+        public event EventHandler<Department> AddDepData;
+        public event EventHandler ReturnBtnState;
         public AddDepartmentForm()
         {
             InitializeComponent();
-            this.DataContext = employeeViewModel;
+            
         }
 
         private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
@@ -47,44 +49,43 @@ namespace WpfCSLev2
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                DepInfo = new Department
-                {
-                    Id = Convert.ToInt32(this.depId.Text),
-                    Name = this.depName.Text
-                    
-                };
-                this.DialogResult = true;
-            }
-            catch (Exception)
-            {
-                this.DialogResult = false;
-            }
-            this.Close();
+            //try
+            //{
+            //    DepInfo = new Department
+            //    {
+            //        Id = Convert.ToInt32(this.depId.Text),
+            //        Name = this.depName.Text
+
+            //    };
+            //    this.DialogResult = true;
+            //}
+            //catch (Exception)
+            //{
+            //    this.DialogResult = false;
+            //}
+            //this.Close();
+            
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
             this.Close();
         }
 
         private void ChangeDepartment_Click(object sender, RoutedEventArgs e)
         {
-            if(depListView.SelectedItem != null)
+            ReturnBtnState?.Invoke(this, e);
+            AddDepData?.Invoke(this, new Department
             {
-                depId.Text = (depListView.SelectedItem as Department).Id.ToString();
-                depName.Text = (depListView.SelectedItem as Department).Name.ToString();
-            }
+                Id = Convert.ToInt32(this.depId.Text),
+                Name = this.depName.Text
+            });
+            this.Close();
         }
 
         private void RemoveDepartment_Click(object sender, RoutedEventArgs e)
         {
-            if (depListView.SelectedItem != null)
-            {
-                employeeViewModel.GetDepartment.Remove(depListView.SelectedItem as Department);
-            }
+            
         }
     }
 }
