@@ -55,6 +55,8 @@ namespace WpfCSLev2
                 Id = Convert.ToInt32(this.depId.Text),
                 Name = this.depName.Text
             });
+            depId.Text = String.Empty;
+            depName.Text = String.Empty;
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -69,6 +71,8 @@ namespace WpfCSLev2
                 Id = Convert.ToInt32(this.depId.Text),
                 Name = this.depName.Text
             });
+            depId.Text = String.Empty;
+            depName.Text = String.Empty;
         }
 
         private void RemoveDepartment_Click(object sender, RoutedEventArgs e)
@@ -77,6 +81,8 @@ namespace WpfCSLev2
             {
                 Id = Convert.ToInt32(this.depId.Text),
             });
+            depId.Text = String.Empty;
+            depName.Text = String.Empty;
         }
     }
 }
