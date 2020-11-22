@@ -22,7 +22,8 @@ namespace WpfCSLev2
         
         public Department DepInfo { get; set; }
         public event EventHandler<Department> AddDepData;
-        public event EventHandler ReturnBtnState;
+        public event EventHandler<Department> UpdateDepData;
+        public event EventHandler<Department> RemoveDepData;
         public AddDepartmentForm()
         {
             InitializeComponent();
@@ -49,22 +50,11 @@ namespace WpfCSLev2
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    DepInfo = new Department
-            //    {
-            //        Id = Convert.ToInt32(this.depId.Text),
-            //        Name = this.depName.Text
-
-            //    };
-            //    this.DialogResult = true;
-            //}
-            //catch (Exception)
-            //{
-            //    this.DialogResult = false;
-            //}
-            //this.Close();
-            
+            AddDepData?.Invoke(this, new Department
+            {
+                Id = Convert.ToInt32(this.depId.Text),
+                Name = this.depName.Text
+            });
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -74,18 +64,19 @@ namespace WpfCSLev2
 
         private void ChangeDepartment_Click(object sender, RoutedEventArgs e)
         {
-            ReturnBtnState?.Invoke(this, e);
-            AddDepData?.Invoke(this, new Department
+            UpdateDepData?.Invoke(this, new Department
             {
                 Id = Convert.ToInt32(this.depId.Text),
                 Name = this.depName.Text
             });
-            this.Close();
         }
 
         private void RemoveDepartment_Click(object sender, RoutedEventArgs e)
         {
-            
+            RemoveDepData?.Invoke(this, new Department
+            {
+                Id = Convert.ToInt32(this.depId.Text),
+            });
         }
     }
 }

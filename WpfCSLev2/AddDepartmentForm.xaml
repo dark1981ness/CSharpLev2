@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         Foreground="White"
         Background="Transparent" WindowStartupLocation="CenterScreen">
-    
+
     <Border BorderThickness="3" CornerRadius="10" Grid.Column="1" Grid.Row="1" Padding="5,0,5,5">
         <Border.BorderBrush>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -60,14 +60,15 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="depId" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedItem.Id, ElementName=depListView}"
+                    <TextBox x:Name="depId" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedItem.Id, ElementName=depListView, Mode=OneWay}"
                              HorizontalAlignment="Center" Height="45" TextWrapping="Wrap"
                          VerticalAlignment="Top" Width="236" Style="{DynamicResource UserNameTextBoxStyle}" Margin="0,0,0,5"/>
-                    <TextBox x:Name="depName" Grid.Row="2" Grid.Column="1" Text="{Binding SelectedItem.Name, ElementName=depListView}"
+                    <TextBox x:Name="depName" Grid.Row="2" Grid.Column="1" Text="{Binding SelectedItem.Name, ElementName=depListView, Mode=OneWay}"
                              HorizontalAlignment="Center" Height="45" TextWrapping="Wrap"
                          VerticalAlignment="Top" Width="236" Style="{DynamicResource UserNameTextBoxStyle}" Margin="0,0,0,5"/>
-                    <Button x:Name="SaveContent" Content="Сохранить" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top"
-                        Click="Button_Add_Click" Style="{DynamicResource PopUpFormBtn}"/>
+                    <Button Content="Изменить" Grid.Row="3" Grid.Column="1" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center" Click="ChangeDepartment_Click" IsEnabled="True" Margin="10,0,132,0"/>
+                    <Button x:Name="SaveContent" Content="Добавить" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top"
+                         Click="Button_Add_Click"  Style="{DynamicResource PopUpFormBtn}" Margin="134,1,10,0"/>
                     <Label Content="Добавить отдел" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
                        VerticalAlignment="Top" Foreground="White" FontSize="14"/>
                     <Label Content="ID:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" 
@@ -75,7 +76,7 @@
                     <Label Content="Отдел:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" 
                        VerticalAlignment="Center" Foreground="White" FontSize="14"/>
                 </Grid>
-                
+
                 <Grid x:Name="wrapPanel" Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -94,8 +95,7 @@
                               ItemTemplate="{StaticResource listViewItem}"
                               ItemContainerStyle="{StaticResource EmployeesListViewItem}"/>
                     <Button Content="Закрыть" Grid.Row="2" Grid.Column="2" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center" Click="Button_Cancel_Click" />
-                    <Button Content="Удалить" Grid.Row="2" Grid.Column="1" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center" Click="RemoveDepartment_Click" IsEnabled="False"/>
-                    <Button Content="Изменить" Grid.Row="2" Grid.Column="0" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center" Click="ChangeDepartment_Click" IsEnabled="True"/>
+                    <Button Content="Удалить" Grid.Row="2" Grid.Column="0" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center" Click="RemoveDepartment_Click" IsEnabled="True"/>
                 </Grid>
             </Grid>
         </Grid>

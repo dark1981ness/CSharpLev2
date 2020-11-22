@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace WpfCSLev2
 {
@@ -26,6 +27,5 @@ namespace WpfCSLev2
             new Department {Id = 2, Name = "бухгалтерия" },
             new Department {Id = 3, Name = "водители" }
         };
-
     }
 }

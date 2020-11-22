@@ -185,22 +185,14 @@
     <Storyboard x:Key="MenuOpen">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
             <EasingDoubleKeyFrame KeyTime="0" Value="75"/>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="300"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="220"/>
         </DoubleAnimationUsingKeyFrames>
-        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="MainCC">
-            <EasingThicknessKeyFrame KeyTime="0" Value="75,30,0,0"/>
-            <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="300,30,0,0"/>
-        </ThicknessAnimationUsingKeyFrames>
     </Storyboard>
     <Storyboard x:Key="MenuClose">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-            <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+            <EasingDoubleKeyFrame KeyTime="0" Value="220"/>
             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="75"/>
         </DoubleAnimationUsingKeyFrames>
-        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="MainCC">
-            <EasingThicknessKeyFrame KeyTime="0" Value="300,30,0,0"/>
-            <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="75,30,0,0"/>
-        </ThicknessAnimationUsingKeyFrames>
     </Storyboard>
     
     <!-- ListViewItem style -->

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Linq;
-
+using System.Collections.ObjectModel;
 
 namespace WpfCSLev2
 {
@@ -15,7 +15,7 @@ namespace WpfCSLev2
         public MainWindow()
         {
             InitializeComponent();
-            
+
             this.DataContext = employeeViewModel;
         }
 
@@ -75,8 +75,13 @@ namespace WpfCSLev2
                     AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
                     addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
                     addDepartmentForm.AddDepData += (s, ev) => employeeViewModel.GetDepartment.Add(new Department { Id = ev.Id, Name = ev.Name });
+                    addDepartmentForm.UpdateDepData += (s, ev) =>
+                        {
+                            var result = employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault();
+                            result.Name = ev.Name;
+                        };
+                    addDepartmentForm.RemoveDepData += (s, ev) => employeeViewModel.GetDepartment.Remove(employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault());
                     addDepartmentForm.Show();
-                    
                     break;
                 case "Employees":
                     AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
@@ -103,7 +108,9 @@ namespace WpfCSLev2
 
         private void employeeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+
         }
+
+
     }
 }
