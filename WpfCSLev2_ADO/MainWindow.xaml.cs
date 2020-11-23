@@ -1,8 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.Common;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Configuration;
 
 namespace WpfCSLev2_ADO
 {
@@ -11,12 +15,14 @@ namespace WpfCSLev2_ADO
     /// </summary>
     public partial class MainWindow : Window
     {
-        EmployeeViewModel employeeViewModel = new EmployeeViewModel();
+        SqlConnection connection;
+        SqlDataAdapter dataAdapter;
+        DataTable dataTable;
         public MainWindow()
         {
             InitializeComponent();
 
-            this.DataContext = employeeViewModel;
+            //this.DataContext = employeeViewModel;
         }
 
         #region window title bar
@@ -73,22 +79,24 @@ namespace WpfCSLev2_ADO
             {
                 case "Home":
                     AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
-                    addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
-                    addDepartmentForm.AddDepData += (s, ev) => employeeViewModel.GetDepartment.Add(new Department { Id = ev.Id, Name = ev.Name });
-                    addDepartmentForm.UpdateDepData += (s, ev) =>
-                        {
-                            var result = employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault();
-                            result.Name = ev.Name;
-                        };
-                    addDepartmentForm.RemoveDepData += (s, ev) => employeeViewModel.GetDepartment.Remove(employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault());
+                    //addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
+                    //addDepartmentForm.AddDepData += (s, ev) => employeeViewModel.GetDepartment.Add(new Department { Id = ev.Id, Name = ev.Name });
+                    //addDepartmentForm.UpdateDepData += (s, ev) =>
+                    //    {
+                    //        var result = employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault();
+                    //        result.Name = ev.Name;
+                    //    };
+                    //addDepartmentForm.RemoveDepData += (s, ev) => employeeViewModel.GetDepartment.Remove(employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault());
                     addDepartmentForm.Show();
                     break;
                 case "Employees":
-                    AddEmployeeForm addEmployeeForm = new AddEmployeeForm();
+                    DataRow dataRow = dataTable.NewRow();
+                    AddEmployeeForm addEmployeeForm = new AddEmployeeForm(dataRow);
                     addEmployeeForm.ShowDialog();
                     if (addEmployeeForm.DialogResult.HasValue && addEmployeeForm.DialogResult.Value)
                     {
-                        employeeViewModel.GetEmployee.Add(addEmployeeForm.Employee);
+                        dataTable.Rows.Add(addEmployeeForm.Employee);
+                        dataAdapter.Update(dataTable);
                     }
                     break;
                 case "Logout":
@@ -108,9 +116,84 @@ namespace WpfCSLev2_ADO
 
         private void employeeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["TestBase"].ConnectionString;
+            connection = new SqlConnection(connectionString);
+            dataAdapter = new SqlDataAdapter();
 
+            // fill datatable
+            string cmdText = @"SELECT id, surname, name, patronymic, birthday, age, salary, position,
+            phone, email, (SELECT name FROM departments WHERE id=employees.department_id) AS 'dep_name' FROM employees";
+            SqlCommand command = new SqlCommand(cmdText, connection);
+            dataAdapter.SelectCommand = command;
+
+            //insert
+            string insertText = @"INSERT INTO employees (surname, name, patronymic, birthday, salary, position,
+            phone, email, department_id) VALUES (@surname, @name, @patronymic, @birthday, @salary, @position,
+            @phone, @email, @department_id); SET @id = @@IDENTITY;";
+            command = new SqlCommand(insertText, connection);
+            command.Parameters.Add("@surname", SqlDbType.NVarChar, 50, "surname");
+            command.Parameters.Add("@name", SqlDbType.NVarChar, 50, "name");
+            command.Parameters.Add("@patronymic", SqlDbType.NVarChar, 50, "patronymic");
+            command.Parameters.Add("@birthday", SqlDbType.Date, 0, "birthday");
+            command.Parameters.Add("@salary", SqlDbType.Float, 0, "salary");
+            command.Parameters.Add("@position", SqlDbType.NVarChar, 50, "position");
+            command.Parameters.Add("@phone", SqlDbType.NVarChar, 50, "phone");
+            command.Parameters.Add("@email", SqlDbType.NVarChar, 50, "email");
+            command.Parameters.Add("@department_id", SqlDbType.Int, 0, "dep_name");
+            SqlParameter parameter = command.Parameters.Add("@id", SqlDbType.Int, 0, "id");
+            parameter.Direction = ParameterDirection.Output;
+            dataAdapter.InsertCommand = command;
+
+            //update
+            string updateText = @"UPDATE employees SET surname = @surname, name = @name, patronymic = @patronymic, birthday = @birthday,
+            salary = @salary, position = @position,
+            phone = @phone, email = @email, department_id = @department_id WHERE id = @id;";
+            command = new SqlCommand(updateText, connection);
+            command.Parameters.Add("@surname", SqlDbType.NVarChar, 50, "surname");
+            command.Parameters.Add("@name", SqlDbType.NVarChar, 50, "name");
+            command.Parameters.Add("@patronymic", SqlDbType.NVarChar, 50, "patronymic");
+            command.Parameters.Add("@birthday", SqlDbType.Date, 0, "birthday");
+            command.Parameters.Add("@salary", SqlDbType.Float, 0, "salary");
+            command.Parameters.Add("@position", SqlDbType.NVarChar, 50, "position");
+            command.Parameters.Add("@phone", SqlDbType.NVarChar, 50, "phone");
+            command.Parameters.Add("@email", SqlDbType.NVarChar, 50, "email");
+            command.Parameters.Add("@department_id", SqlDbType.Int, 0, "dep_name");
+            parameter = command.Parameters.Add("@id", SqlDbType.Int, 0, "id");
+            parameter.SourceVersion = DataRowVersion.Original;
+            dataAdapter.UpdateCommand = command;
+
+            //remove
+            string removeText = @"DELETE FROM employees WHERE id = @id";
+            command = new SqlCommand(removeText, connection);
+            parameter = command.Parameters.Add("@id", SqlDbType.Int, 0, "id");
+            parameter.SourceVersion = DataRowVersion.Original;
+            dataAdapter.DeleteCommand = command;
+
+            dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            MainGrid.DataContext = dataTable.DefaultView;
+        }
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataRowView rowView = (DataRowView)MainGrid.SelectedItem;
+            rowView.BeginEdit();
+            AddEmployeeForm addEmployeeForm = new AddEmployeeForm(rowView.Row);
+            addEmployeeForm.ShowDialog();
+            if (addEmployeeForm.DialogResult.HasValue && addEmployeeForm.DialogResult.Value)
+            {
+                rowView.EndEdit();
+                dataAdapter.Update(dataTable);
+            }
+            else
+            {
+                rowView.CancelEdit();
+            }
+        }
     }
 }

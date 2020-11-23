@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,10 +10,11 @@ namespace WpfCSLev2_ADO
     /// </summary>
     public partial class AddEmployeeForm : Window
     {
-        public Employee Employee { get; set; }
-        public AddEmployeeForm()
+        public DataRow Employee { get; set; }
+        public AddEmployeeForm(DataRow dataRow)
         {
             InitializeComponent();
+            Employee = dataRow;
         }
 
         private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
@@ -30,39 +32,50 @@ namespace WpfCSLev2_ADO
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void Button_OK_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Employee = new Employee
-                {
-                    DepartmentId = Convert.ToInt32(this.uId.Text),
-                    Name = this.uName.Text,
-                    Surname = this.uSurname.Text,
-                    Patronymic = this.uPatr.Text,
-                    Birthday = Convert.ToDateTime(this.uBithday.Text),
-                    Age = Convert.ToByte(this.uAge.Text),
-                    Salary = Convert.ToSingle(this.uSalary.Text),
-                    Position = this.uPos.Text,
-                    Phone = this.uPhone.Text,
-                    Email = this.uEmail.Text
-                };
-                this.DialogResult = true;
+
+                Employee["dep_name"] = Convert.ToInt32(uId.Text);
+                Employee["name"] = uName.Text;
+                Employee["surname"] = uSurname.Text;
+                Employee["patronymic"] = uPatr.Text;
+                Employee["birthday"] = Convert.ToDateTime(uBithday.Text);
+                Employee["salary"] = Convert.ToSingle(uSalary.Text);
+                Employee["position"] = uPos.Text;
+                Employee["phone"] = uPhone.Text;
+                Employee["email"] = uEmail.Text;
+
+                DialogResult = true;
             }
             catch (Exception)
             {
-                this.DialogResult = false;
+                DialogResult = false;
             }
-            this.Close();
+            Close();
         }
 
         private void Button_Cancek_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
-            this.Close();
+            DialogResult = false;
+            Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            uId.Text =  Employee["dep_name"].ToString();
+            uName.Text = Employee["name"].ToString();
+            uSurname.Text = Employee["surname"].ToString();
+            uPatr.Text = Employee["patronymic"].ToString();
+            uBithday.Text = Employee["birthday"].ToString();
+            uSalary.Text = Employee["salary"].ToString();
+            uPos.Text = Employee["position"].ToString();
+            uPhone.Text = Employee["phone"].ToString();
+            uEmail.Text = Employee["email"].ToString();
         }
     }
 }

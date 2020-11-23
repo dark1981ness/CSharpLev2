@@ -18,3 +18,5 @@ D:\learning\CSharpLev2\WpfCSLev2_ADO\obj\Debug\WpfCSLev2_ADO.csproj.GenerateReso
 D:\learning\CSharpLev2\WpfCSLev2_ADO\obj\Debug\WpfCSLev2_ADO.csproj.CoreCompileInputs.cache
 D:\learning\CSharpLev2\WpfCSLev2_ADO\obj\Debug\WpfCSLev2_ADO.exe
 D:\learning\CSharpLev2\WpfCSLev2_ADO\obj\Debug\WpfCSLev2_ADO.pdb
+D:\learning\CSharpLev2\WpfCSLev2_ADO\obj\Debug\WpfCSLev2_ADO_Content.g.cs
+D:\learning\CSharpLev2\WpfCSLev2_ADO\obj\Debug\WpfCSLev2_ADO.csprojAssemblyReference.cache

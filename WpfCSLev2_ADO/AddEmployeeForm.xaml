@@ -11,7 +11,8 @@
         AllowsTransparency="True"
         ResizeMode="NoResize"
         Background="Transparent"
-        Foreground="White" WindowStartupLocation="CenterScreen">
+        Foreground="White" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Window.Resources>
 
     </Window.Resources>
@@ -69,11 +70,10 @@
                 <Label Content="Фамилия:" Grid.Column="0" Grid.Row="2" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
                 <Label Content="Отчество:" Grid.Column="0" Grid.Row="3" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
                 <Label Content="Дата рождения:" Grid.Column="0" Grid.Row="4" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
-                <Label Content="Возраст:" Grid.Column="0" Grid.Row="5" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
-                <Label Content="Должность:" Grid.Column="0" Grid.Row="6" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
-                <Label Content="Зарплата:" Grid.Column="0" Grid.Row="7" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
-                <Label Content="Местный телефон:" Grid.Column="0" Grid.Row="8" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
-                <Label Content="Почта:" Grid.Column="0" Grid.Row="9" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center"/>
+                <Label Content="Должность:" Grid.Column="0" Grid.Row="5" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
+                <Label Content="Зарплата:" Grid.Column="0" Grid.Row="6" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
+                <Label Content="Местный телефон:" Grid.Column="0" Grid.Row="7" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" />
+                <Label Content="Почта:" Grid.Column="0" Grid.Row="8" Foreground="White" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center"/>
                 <TextBox x:Name="uId" Grid.Column="1" Grid.Row="0" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
                 <TextBox x:Name="uName" Grid.Column="1" Grid.Row="1" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
                 <TextBox x:Name="uSurname" Grid.Column="1" Grid.Row="2" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
@@ -84,18 +84,17 @@
                             <Setter Property="Control.Template">
                                 <Setter.Value>
                                     <ControlTemplate>
-                                        <TextBox x:Name="PART_TextBox" Text="{Binding SelectedDate,RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" Style="{DynamicResource UserNameTextBoxStyle}"/>
+                                        <TextBox x:Name="PART_TextBox" Text="{Binding SelectedDate, StringFormat='dd.MM.yyyy',RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" Style="{DynamicResource UserNameTextBoxStyle}"/>
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
                         </Style>
                     </DatePicker.Resources>
                 </DatePicker>
-                <TextBox x:Name="uAge" Grid.Column="1" Grid.Row="5" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
-                <TextBox x:Name="uPos" Grid.Column="1" Grid.Row="6" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
-                <TextBox x:Name="uSalary" Grid.Column="1" Grid.Row="7" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
-                <TextBox x:Name="uPhone" Grid.Column="1" Grid.Row="8" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
-                <TextBox x:Name="uEmail" Grid.Column="1" Grid.Row="9" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="uPos" Grid.Column="1" Grid.Row="5" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="uSalary" Grid.Column="1" Grid.Row="6" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="uPhone" Grid.Column="1" Grid.Row="7" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="uEmail" Grid.Column="1" Grid.Row="8" Margin="0,3,10,3" Style="{StaticResource UserNameTextBoxStyle}" HorizontalAlignment="Left"/>
                 <Button Content="OK" Width="{Binding ActualWidth, ElementName=CancelBtn, Mode=OneWay}" Grid.Column="0" Grid.Row="10" Margin="30,10,0,0" Click="Button_OK_Click" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center"/>
                 <Button x:Name="CancelBtn" Content="Cancel" Grid.Column="1" Grid.Row="10" Margin="30,10,0,0" Click="Button_Cancek_Click" Style="{DynamicResource PopUpFormBtn}" HorizontalAlignment="Center"/>
             </Grid>

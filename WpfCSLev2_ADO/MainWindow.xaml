@@ -12,7 +12,8 @@
         BorderThickness="1"
         BorderBrush="Black"
         ResizeMode="NoResize"
-        Foreground="White">
+        Foreground="White"
+        Loaded="Window_Loaded">
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="OpenMenuBtn">
@@ -92,7 +93,7 @@
         <Grid Grid.Row="1" Grid.Column="1" Background="#FF252526">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
@@ -115,41 +116,37 @@
                 </Border.Background>
                 <DataGrid x:Name="MainGrid"
                               AutoGenerateColumns="False" CanUserAddRows="True"
-                              ItemsSource="{Binding GetEmployee}" Margin="5,5,5,2" Background="#FF333333"
+                              ItemsSource="{Binding}" Margin="5,5,5,2" Background="#FF333333"
                               Foreground="White" BorderBrush="{x:Null}" HeadersVisibility="Column"
                               GridLinesVisibility="None" RowBackground="#FF333333"
                               ColumnHeaderStyle="{DynamicResource MainGridColumnHeaderStyle}" IsReadOnly="True">
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridRow">
+                            <Style.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFB24628" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FF272727" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+                            </Style.Resources>
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick" />
+                        </Style>
+                    </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" Width="auto"/>
-                        <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="auto"/>
-                        <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" Width="auto"/>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding surname}" Width="auto"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding name}" Width="auto"/>
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding patronymic}" Width="auto"/>
                         <DataGridTemplateColumn Header="Дата рождения" CanUserSort="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding Birthday}" Width="auto" IsEnabled="False"/>
+                                    <DatePicker SelectedDate="{Binding birthday}" Width="auto" IsEnabled="False"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Возраст" Binding="{Binding Age}" Width="auto"/>
-                        <DataGridTextColumn Header="Зарплата" Binding="{Binding Salary}" Width="auto"/>
-                        <DataGridTextColumn Header="Должность" Binding="{Binding Position}" Width="auto"/>
-                        <DataGridTextColumn Header="Местный телефон" Binding="{Binding Phone}" Width="auto"/>
-                        <DataGridHyperlinkColumn Header="Почта" Binding="{Binding Email}" Width="auto"/>
-                        <DataGridComboBoxColumn x:Name="testcb" Header="Подразделение" Width="auto"
-                                                    DisplayMemberPath="Name"
-                                                    SelectedValuePath="Id"
-                                                    SelectedValueBinding="{Binding DepartmentId}">
-                            <DataGridComboBoxColumn.ElementStyle>
-                                <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.GetDepartment, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-                                </Style>
-                            </DataGridComboBoxColumn.ElementStyle>
-                            <DataGridComboBoxColumn.EditingElementStyle>
-                                <Style TargetType="{x:Type ComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.GetDepartment, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-                                </Style>
-                            </DataGridComboBoxColumn.EditingElementStyle>
-                        </DataGridComboBoxColumn>
+                        <DataGridTextColumn Header="Возраст" Binding="{Binding age}" Width="auto"/>
+                        <DataGridTextColumn Header="Зарплата" Binding="{Binding salary}" Width="auto"/>
+                        <DataGridTextColumn Header="Должность" Binding="{Binding position}" Width="auto"/>
+                        <DataGridTextColumn Header="Местный телефон" Binding="{Binding phone}" Width="auto"/>
+                        <DataGridHyperlinkColumn Header="Почта" Binding="{Binding email}" Width="auto"/>
+                        <DataGridTextColumn Header="Подразделение" Binding="{Binding dep_name}" Width="auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
@@ -193,42 +190,19 @@
                     <TextBlock x:Name="fullName" Grid.Column="1" Grid.Row="0" Margin="2" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Arial Black">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}Ф.И.О.: {0} {1} {2}">
-                                <Binding ElementName="MainGrid" Path="SelectedItem.Surname" Mode="OneWay" />
-                                <Binding ElementName="MainGrid" Path="SelectedItem.Name" Mode="OneWay" />
-                                <Binding ElementName="MainGrid" Path="SelectedItem.Patronymic" Mode="OneWay" />
+                                <Binding ElementName="MainGrid" Path="SelectedItem.surname" Mode="OneWay" />
+                                <Binding ElementName="MainGrid" Path="SelectedItem.name" Mode="OneWay" />
+                                <Binding ElementName="MainGrid" Path="SelectedItem.patronymic" Mode="OneWay" />
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
                     <TextBlock x:Name="uPosition" Grid.Column="1" Grid.Row="1" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Arial Black"
-                                   Text="{Binding SelectedItem.Position, ElementName=MainGrid, StringFormat=Должность: {0}}"/>
+                                   Text="{Binding SelectedItem.position, ElementName=MainGrid, StringFormat=Должность: {0}}"/>
                     <TextBlock x:Name="localPhoneNumber" Grid.Column="1" Grid.Row="2" Margin="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Arial Black"
-                                   Text="{Binding SelectedItem.Phone, ElementName=MainGrid, StringFormat=Местный тел: {0}}"/>
+                                   Text="{Binding SelectedItem.phone, ElementName=MainGrid, StringFormat=Местный тел: {0}}"/>
                     <TextBlock x:Name="email" Grid.Column="1" Grid.Row="3" Margin="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Arial Black"
-                                   Text="{Binding SelectedItem.Email, ElementName=MainGrid, StringFormat=E-mail: {0}}"/>
+                                   Text="{Binding SelectedItem.email, ElementName=MainGrid, StringFormat=E-mail: {0}}"/>
                 </Grid>
-            </Border>
-
-            <!-- show list of departments-->
-            <Border BorderThickness="3" CornerRadius="10" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="0,10,10,10" Padding="5">
-                <Border.BorderBrush>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFA20022" Offset="1"/>
-                        <GradientStop Color="#FFC70039"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" ShadowDepth="4"/>
-                </Border.Effect>
-                <Border.Background>
-                    <ImageBrush ImageSource="Resources/listitembgdflt.png" Opacity="0.3"/>
-                </Border.Background>
-                <ListView x:Name="employeeView"
-                          Background="{x:Null}"
-                          BorderThickness="0"
-                          ItemsSource="{Binding GetDepartment}"
-                          ItemTemplate="{StaticResource listViewItem}"
-                          ItemContainerStyle="{StaticResource EmployeesListViewItem}" MouseDoubleClick="employeeView_MouseDoubleClick"
-                     />
             </Border>
         </Grid>
     </Grid>
