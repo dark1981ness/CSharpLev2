@@ -78,8 +78,9 @@ namespace WpfCSLev2_ADO
             switch (item.Name)
             {
                 case "Home":
+                    
                     AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
-                    //addDepartmentForm.depListView.ItemsSource = employeeViewModel.GetDepartment;
+                    addDepartmentForm.depListView.DataContext = dataTable.DefaultView;
                     //addDepartmentForm.AddDepData += (s, ev) => employeeViewModel.GetDepartment.Add(new Department { Id = ev.Id, Name = ev.Name });
                     //addDepartmentForm.UpdateDepData += (s, ev) =>
                     //    {
@@ -126,8 +127,11 @@ namespace WpfCSLev2_ADO
             dataAdapter = new SqlDataAdapter();
 
             // fill datatable
-            string cmdText = @"SELECT id, surname, name, patronymic, birthday, age, salary, position,
-            phone, email, (SELECT name FROM departments WHERE id=employees.department_id) AS 'dep_name' FROM employees";
+            //string cmdText = @"SELECT id, surname, name, patronymic, birthday, age, salary, position,
+            //phone, email, department_id FROM employees";
+            string cmdText = @"SELECT employees.id, employees.surname, employees.name, employees.patronymic, employees.birthday, employees.age, employees.salary, employees.position,
+employees.phone, employees.email, employees.department_id, departments.id AS 'dep_id', departments.name AS 'dep_name' FROM employees
+INNER JOIN departments ON employees.department_id = departments.id;";
             SqlCommand command = new SqlCommand(cmdText, connection);
             dataAdapter.SelectCommand = command;
 
@@ -144,7 +148,7 @@ namespace WpfCSLev2_ADO
             command.Parameters.Add("@position", SqlDbType.NVarChar, 50, "position");
             command.Parameters.Add("@phone", SqlDbType.NVarChar, 50, "phone");
             command.Parameters.Add("@email", SqlDbType.NVarChar, 50, "email");
-            command.Parameters.Add("@department_id", SqlDbType.Int, 0, "dep_name");
+            command.Parameters.Add("@department_id", SqlDbType.Int, 0, "department_id");
             SqlParameter parameter = command.Parameters.Add("@id", SqlDbType.Int, 0, "id");
             parameter.Direction = ParameterDirection.Output;
             dataAdapter.InsertCommand = command;
@@ -162,7 +166,7 @@ namespace WpfCSLev2_ADO
             command.Parameters.Add("@position", SqlDbType.NVarChar, 50, "position");
             command.Parameters.Add("@phone", SqlDbType.NVarChar, 50, "phone");
             command.Parameters.Add("@email", SqlDbType.NVarChar, 50, "email");
-            command.Parameters.Add("@department_id", SqlDbType.Int, 0, "dep_name");
+            command.Parameters.Add("@department_id", SqlDbType.Int, 0, "department_id");
             parameter = command.Parameters.Add("@id", SqlDbType.Int, 0, "id");
             parameter.SourceVersion = DataRowVersion.Original;
             dataAdapter.UpdateCommand = command;

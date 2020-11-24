@@ -40,7 +40,7 @@ namespace WpfCSLev2_ADO
             try
             {
 
-                Employee["dep_name"] = Convert.ToInt32(uId.Text);
+                Employee["department_id"] = Convert.ToInt32(uId.Text);
                 Employee["name"] = uName.Text;
                 Employee["surname"] = uSurname.Text;
                 Employee["patronymic"] = uPatr.Text;
@@ -67,7 +67,7 @@ namespace WpfCSLev2_ADO
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            uId.Text =  Employee["dep_name"].ToString();
+            uId.Text =  Employee["department_id"].ToString();
             uName.Text = Employee["name"].ToString();
             uSurname.Text = Employee["surname"].ToString();
             uPatr.Text = Employee["patronymic"].ToString();
