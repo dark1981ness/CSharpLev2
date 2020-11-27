@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +22,17 @@ namespace WpfCSLev2_ADO
     /// </summary>
     public partial class AddDepartmentForm : Window
     {
-        
-        public Department DepInfo { get; set; }
-        public event EventHandler<Department> AddDepData;
-        public event EventHandler<Department> UpdateDepData;
-        public event EventHandler<Department> RemoveDepData;
-        public AddDepartmentForm()
+
+        public DataTable Department { get; set; }
+        public AddDepartmentForm(DataTable dataRow)
         {
             InitializeComponent();
-            
+            Department = dataRow;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            depListView.ItemsSource = Department.DefaultView;
         }
 
         private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
@@ -50,13 +55,16 @@ namespace WpfCSLev2_ADO
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            AddDepData?.Invoke(this, new Department
-            {
-                Id = Convert.ToInt32(this.depId.Text),
-                Name = this.depName.Text
-            });
-            depId.Text = String.Empty;
-            depName.Text = String.Empty;
+            string cmdText = "INSERT INTO departments(name) VALUES(@name)";
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["TestBase"].ConnectionString);
+            connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand(cmdText, connection);
+            cmd.Parameters.AddWithValue("@name", depName.Text);
+            dataAdapter.InsertCommand = cmd;
+            dataAdapter.InsertCommand.ExecuteNonQuery();
+            cmd.Dispose();
+            connection.Close();
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -66,23 +74,29 @@ namespace WpfCSLev2_ADO
 
         private void ChangeDepartment_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDepData?.Invoke(this, new Department
-            {
-                Id = Convert.ToInt32(this.depId.Text),
-                Name = this.depName.Text
-            });
-            depId.Text = String.Empty;
-            depName.Text = String.Empty;
+            string cmdText = "UPDATE departments SET name = @name WHERE id = @id";
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["TestBase"].ConnectionString);
+            connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand(cmdText, connection);
+            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(depId.Text));
+            cmd.Parameters.AddWithValue("@name", depName.Text);
+            dataAdapter.UpdateCommand= cmd;
+            dataAdapter.UpdateCommand.ExecuteNonQuery();
+            connection.Close();
         }
 
         private void RemoveDepartment_Click(object sender, RoutedEventArgs e)
         {
-            RemoveDepData?.Invoke(this, new Department
-            {
-                Id = Convert.ToInt32(this.depId.Text),
-            });
-            depId.Text = String.Empty;
-            depName.Text = String.Empty;
+            string cmdText = @"DELETE FROM departments WHERE id = @id";
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["TestBase"].ConnectionString);
+            connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand(cmdText, connection);
+            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(depId.Text));
+            dataAdapter.DeleteCommand = cmd;
+            dataAdapter.DeleteCommand.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }

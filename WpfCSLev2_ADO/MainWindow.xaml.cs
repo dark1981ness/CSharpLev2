@@ -78,16 +78,7 @@ namespace WpfCSLev2_ADO
             switch (item.Name)
             {
                 case "Home":
-                    
-                    AddDepartmentForm addDepartmentForm = new AddDepartmentForm();
-                    addDepartmentForm.depListView.DataContext = dataTable.DefaultView;
-                    //addDepartmentForm.AddDepData += (s, ev) => employeeViewModel.GetDepartment.Add(new Department { Id = ev.Id, Name = ev.Name });
-                    //addDepartmentForm.UpdateDepData += (s, ev) =>
-                    //    {
-                    //        var result = employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault();
-                    //        result.Name = ev.Name;
-                    //    };
-                    //addDepartmentForm.RemoveDepData += (s, ev) => employeeViewModel.GetDepartment.Remove(employeeViewModel.GetDepartment.Where(x => x.Id == ev.Id).FirstOrDefault());
+                    AddDepartmentForm addDepartmentForm = new AddDepartmentForm(GetDepartment());
                     addDepartmentForm.Show();
                     break;
                 case "Employees":
@@ -127,11 +118,10 @@ namespace WpfCSLev2_ADO
             dataAdapter = new SqlDataAdapter();
 
             // fill datatable
-            //string cmdText = @"SELECT id, surname, name, patronymic, birthday, age, salary, position,
-            //phone, email, department_id FROM employees";
-            string cmdText = @"SELECT employees.id, employees.surname, employees.name, employees.patronymic, employees.birthday, employees.age, employees.salary, employees.position,
-employees.phone, employees.email, employees.department_id, departments.id AS 'dep_id', departments.name AS 'dep_name' FROM employees
-INNER JOIN departments ON employees.department_id = departments.id;";
+            
+            string cmdText = @"SELECT employees.id, surname, employees.name, patronymic, birthday, age, salary, position,
+            phone, email, department_id, departments.name AS 'dep_name' FROM employees
+            INNER JOIN departments ON departments.id = employees.department_id";
             SqlCommand command = new SqlCommand(cmdText, connection);
             dataAdapter.SelectCommand = command;
 
@@ -198,6 +188,19 @@ INNER JOIN departments ON employees.department_id = departments.id;";
             {
                 rowView.CancelEdit();
             }
+        }
+
+        private DataTable GetDepartment()
+        {
+            string cmdText = @"SELECT id, name FROM departments;";
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["TestBase"].ConnectionString);
+            dataAdapter = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand(cmdText, connection);
+            dataAdapter.SelectCommand = cmd;
+            dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            connection.Close();
+            return dataTable;
         }
     }
 }

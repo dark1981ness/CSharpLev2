@@ -146,7 +146,7 @@
                         <DataGridTextColumn Header="Должность" Binding="{Binding position}" Width="auto"/>
                         <DataGridTextColumn Header="Местный телефон" Binding="{Binding phone}" Width="auto"/>
                         <DataGridHyperlinkColumn Header="Почта" Binding="{Binding email}" Width="auto"/>
-                        <DataGridTextColumn Header="Подразделение" Binding="{Binding department_id}" Width="auto"/>
+                        <DataGridTextColumn Header="Подразделение" Binding="{Binding dep_name}" Width="auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
